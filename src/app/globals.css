@@ -88,3 +88,17 @@ body {
   z-index: 0;
   pointer-events: none;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-scroll {
+  animation: marquee 35s linear infinite;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+}
+

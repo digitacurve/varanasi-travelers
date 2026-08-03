@@ -11,15 +11,6 @@ export interface Package {
   tag?: string;
 }
 
-export interface Hotel {
-  id: string;
-  name: string;
-  category: 'Luxury' | 'Premium' | 'Deluxe';
-  rating: number;
-  location: string;
-  amenities: string[];
-  image: string;
-}
 
 export interface Vehicle {
   id: string;
@@ -201,37 +192,42 @@ export const tourPackages: Package[] = [
     image: '/images/Ayodhya-tour6.png',
     tag: 'Premium Luxury',
   },
+  {
+    id: 'mahakal-ujjain',
+    name: 'Mahakal Ujjain Tour Package',
+    duration: '1 Night / 2 Days',
+    destinations: ['Ujjain'],
+    startingPrice: 4200,
+    description: 'Seek blessings at Shri Mahakaleshwar Jyotirlinga and walk the grand Mahakal Lok corridor. Enjoy evening Aarti at Ram Ghat and explore holy temples in Ujjain.',
+    highlights: [
+      'VIP Darshan at Shri Mahakaleshwar Jyotirlinga Temple',
+      'Walk through the spectacular Mahakal Lok Corridor',
+      'Experience the evening Shipra River Aarti at Ram Ghat',
+      'Visit Bade Ganesh, Harsiddhi Mata, & Kal Bhairav temples',
+    ],
+    inclusions: ['Hotel Stay', 'Hygienic Veg Breakfast', 'Private AC Cab for sightseeing', 'Driver Allowance & Tolls', 'Pickup & Drop assistance'],
+    image: '/images/Ujjain-tour1.png',
+    tag: 'Weekend Special',
+  },
+  {
+    id: 'mahakal-omkareshwar',
+    name: 'Mahakal + Omkareshwar Package',
+    duration: '2 Nights / 3 Days',
+    destinations: ['Ujjain', 'Omkareshwar'],
+    startingPrice: 9000,
+    description: 'A sacred journey covering two major Jyotirlingas in Madhya Pradesh. Offer prayers at Mahakaleshwar in Ujjain and Omkareshwar Temple on Mandhata Island.',
+    highlights: [
+      'Darshan at Mahakaleshwar and Omkareshwar Jyotirlingas',
+      'Visit Mamleshwar Temple and take a holy dip at Narmada Ghat',
+      'Explore Ujjain local shrines like Kal Bhairav & Mangalnath',
+      'Comfortable intercity transit in a private air-conditioned cab',
+    ],
+    inclusions: ['Hotel Stay (Ujjain & Omkareshwar)', 'Veg Breakfast', 'Private AC Cab for transit', 'Driver Allowance & Tolls', 'Excursion & local transfers'],
+    image: '/images/Omkareshwar-tour1.png',
+    tag: 'Best Seller',
+  },
 ];
 
-export const hotelDetails: Hotel[] = [
-  {
-    id: 'kashi-palace',
-    name: 'BrijRama Palace - Heritage Boutique Hotel',
-    category: 'Luxury',
-    rating: 5,
-    location: 'Darbhanga Ghat, Varanasi',
-    amenities: ['Riverfront View', 'Vedic Chanting Sessions', 'Pure Vegetarian Fine Dining', 'Spa & Yoga Desk', 'Free Wi-Fi'],
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 'ayodhya-grand',
-    name: 'The Ramayana Hotel',
-    category: 'Premium',
-    rating: 4.5,
-    location: 'Near Ram Ki Paidi, Ayodhya',
-    amenities: ['Spacious Rooms', 'Swimming Pool', 'Multi-Cuisine Satvik Restaurant', 'Temple Shuttle Service', 'Beautiful Gardens'],
-    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
-  },
-  {
-    id: 'prayag-regency',
-    name: 'Hotel Kanha Shyam',
-    category: 'Deluxe',
-    rating: 4.2,
-    location: 'Civil Lines, Prayagraj',
-    amenities: ['Central Location', 'Premium Bedding', 'Veg Restaurant & Cafe', 'Travel Desk', '24x7 Room Service'],
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800',
-  },
-];
 
 export const vehicles: Vehicle[] = [
   {
@@ -297,7 +293,7 @@ export const faqs: FAQItem[] = [
   {
     id: 'faq-1',
     question: 'How do I book a tour package with your agency?',
-    answer: 'You can book by submitting the inquiry form on our landing page, calling our 24x7 customer support directly at +91 98765 43210, or clicking the WhatsApp button. Our travel specialist will call you back within 15 minutes to share a customized itinerary and handle payments securely.',
+    answer: 'You can book by submitting the inquiry form on our landing page, calling our 24x7 customer support directly at +91 92881 00260, or clicking the WhatsApp button. Our travel specialist will call you back within 15 minutes to share a customized itinerary and handle payments securely.',
   },
   {
     id: 'faq-2',
@@ -322,40 +318,155 @@ export const faqs: FAQItem[] = [
 ];
 
 export const galleryImages = [
+  // Varanasi
   {
     id: 'g-1',
-    url: 'https://images.unsplash.com/photo-1561361513-2d000a50f0db?auto=format&fit=crop&q=80&w=800',
-    title: 'Mesmerizing Varanasi Ganga Aarti',
+    url: '/images/gallery/varanasi_kashi_vishwanath.webp',
+    title: 'Kashi Vishwanath Temple',
     category: 'Varanasi',
   },
   {
     id: 'g-2',
-    url: 'https://images.unsplash.com/photo-1711202868205-d1447fb90fb5?auto=format&fit=crop&q=80&w=800',
-    title: 'Shri Ram Janmabhoomi Mandir, Ayodhya',
-    category: 'Ayodhya',
+    url: '/images/gallery/varanasi_ganga_aarti.webp',
+    title: 'Ganga Aarti at Dashashwamedh Ghat',
+    category: 'Varanasi',
   },
   {
     id: 'g-3',
-    url: 'https://images.unsplash.com/photo-1598977123418-45f04b6159c3?auto=format&fit=crop&q=80&w=800',
-    title: 'Triveni Sangam Holy Snan, Prayagraj',
-    category: 'Prayagraj',
+    url: '/images/gallery/varanasi_sunrise_boat_ride.webp',
+    title: 'Sunrise Boat Ride on the Ganga',
+    category: 'Varanasi',
   },
   {
     id: 'g-4',
-    url: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=800',
-    title: 'Varanasi Ghats Morning Boat Ride',
+    url: '/images/gallery/varanasi_assi_ghat.webp',
+    title: 'Assi Ghat',
     category: 'Varanasi',
   },
   {
     id: 'g-5',
-    url: 'https://images.unsplash.com/photo-1503177119275-0aa32b31d468?auto=format&fit=crop&q=80&w=800',
-    title: 'Historic Sarnath Stupa Ruins',
+    url: '/images/gallery/varanasi_manikarnika_ghat.webp',
+    title: 'Manikarnika Ghat',
     category: 'Varanasi',
   },
   {
     id: 'g-6',
-    url: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800',
-    title: 'Heritage Temple Architecture',
+    url: '/images/gallery/varanasi_sarnath_stupa.webp',
+    title: 'Sarnath Dhamek Stupa',
+    category: 'Varanasi',
+  },
+
+  // Ayodhya
+  {
+    id: 'g-7',
+    url: '/images/gallery/ayodhya_ram_mandir_day.webp',
+    title: 'Shri Ram Janmabhoomi Mandir (Day)',
     category: 'Ayodhya',
+  },
+  {
+    id: 'g-8',
+    url: '/images/gallery/ayodhya_ram_mandir_night.webp',
+    title: 'Shri Ram Mandir (Night)',
+    category: 'Ayodhya',
+  },
+  {
+    id: 'g-9',
+    url: '/images/gallery/ayodhya_hanuman_garhi.webp',
+    title: 'Hanuman Garhi',
+    category: 'Ayodhya',
+  },
+  {
+    id: 'g-10',
+    url: '/images/gallery/ayodhya_kanak_bhawan.webp',
+    title: 'Kanak Bhawan',
+    category: 'Ayodhya',
+  },
+  {
+    id: 'g-11',
+    url: '/images/gallery/ayodhya_ram_ki_paidi.webp',
+    title: 'Ram Ki Paidi',
+    category: 'Ayodhya',
+  },
+  {
+    id: 'g-12',
+    url: '/images/gallery/ayodhya_saryu_aarti.webp',
+    title: 'Saryu River Evening Aarti',
+    category: 'Ayodhya',
+  },
+
+  // Prayagraj
+  {
+    id: 'g-13',
+    url: '/images/gallery/prayagraj_triveni_sangam_view.webp',
+    title: 'Triveni Sangam',
+    category: 'Prayagraj',
+  },
+  {
+    id: 'g-14',
+    url: '/images/gallery/prayagraj_sangam_boats.webp',
+    title: 'Boat Ride at Sangam',
+    category: 'Prayagraj',
+  },
+  {
+    id: 'g-15',
+    url: '/images/gallery/prayagraj_bade_hanuman.webp',
+    title: 'Bade Hanuman Temple',
+    category: 'Prayagraj',
+  },
+  {
+    id: 'g-16',
+    url: '/images/gallery/prayagraj_akshayavat_temple.webp',
+    title: 'Akshayavat',
+    category: 'Prayagraj',
+  },
+  {
+    id: 'g-17',
+    url: '/images/gallery/prayagraj_anand_bhavan.webp',
+    title: 'Anand Bhavan',
+    category: 'Prayagraj',
+  },
+  {
+    id: 'g-18',
+    url: '/images/gallery/prayagraj_evening_ghat.webp',
+    title: 'Yamuna River Evening Ghat View',
+    category: 'Prayagraj',
+  },
+
+  // Ujjain
+  {
+    id: 'g-19',
+    url: '/images/gallery/ujjain_mahakaleshwar_temple.webp',
+    title: 'Mahakaleshwar Temple',
+    category: 'Ujjain',
+  },
+  {
+    id: 'g-20',
+    url: '/images/gallery/ujjain_mahakal_lok.webp',
+    title: 'Mahakal Lok Corridor',
+    category: 'Ujjain',
+  },
+  {
+    id: 'g-21',
+    url: '/images/gallery/ujjain_harsiddhi_temple.webp',
+    title: 'Harsiddhi Mata Temple',
+    category: 'Ujjain',
+  },
+  {
+    id: 'g-22',
+    url: '/images/gallery/ujjain_kal_bhairav.webp',
+    title: 'Kal Bhairav Temple',
+    category: 'Ujjain',
+  },
+  {
+    id: 'g-23',
+    url: '/images/gallery/ujjain_ram_ghat.webp',
+    title: 'Ram Ghat, Shipra River',
+    category: 'Ujjain',
+  },
+  {
+    id: 'g-24',
+    url: '/images/gallery/ujjain_omkareshwar_temple.webp',
+    title: 'Omkareshwar Temple',
+    category: 'Ujjain',
   },
 ];

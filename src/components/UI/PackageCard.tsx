@@ -28,7 +28,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect }) => {
     const message = encodeURIComponent(
       `Hello! I would like to book the "${pkg.name}" (${pkg.duration}). Please send me the itinerary.`
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, "_blank");
+    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
   };
 
   return (

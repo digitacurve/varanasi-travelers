@@ -6,13 +6,13 @@ import { ZoomIn } from "lucide-react";
 import { galleryImages } from "@/data/content";
 import { Lightbox } from "../UI/Lightbox";
 
-type GalleryCategory = "All" | "Varanasi" | "Ayodhya" | "Prayagraj";
+type GalleryCategory = "All" | "Varanasi" | "Ayodhya" | "Prayagraj" | "Ujjain";
 
 export const Gallery: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories: GalleryCategory[] = ["All", "Varanasi", "Ayodhya", "Prayagraj"];
+  const categories: GalleryCategory[] = ["All", "Varanasi", "Ayodhya", "Prayagraj", "Ujjain"];
 
   const filteredImages = galleryImages.filter((img) => {
     if (activeCategory === "All") return true;
@@ -50,7 +50,7 @@ export const Gallery: React.FC = () => {
             Pilgrimage Photo Gallery
           </h2>
           <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
-            Take a visual tour through India's holy lands. Explore the ghats of Varanasi, the grandeur of Ayodhya, and the confluence of Prayagraj.
+            Take a visual tour through India's holy lands. Explore the ghats of Varanasi, the grandeur of Ayodhya, the confluence of Prayagraj, and the temples of Ujjain.
           </p>
         </div>
 

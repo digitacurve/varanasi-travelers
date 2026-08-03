@@ -26,9 +26,10 @@ export const Footer: React.FC = () => {
             <div className="bg-white px-3 py-2 rounded-xl inline-block w-fit">
               <div className="relative w-32 h-10">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo_transparent.png"
                   alt="Varanasi Travelers Logo"
                   fill
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>
@@ -142,11 +143,8 @@ export const Footer: React.FC = () => {
               <li className="flex gap-2 items-start">
                 <Phone size={14} className="text-accent-orange shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+917985100260" className="hover:text-white transition-colors">
-                    +91 7985100260
-                  </a>
-                  <a href="tel:+91940179437" className="hover:text-white transition-colors">
-                    +91 940179437
+                  <a href="tel:+919288100260" className="hover:text-white transition-colors">
+                    +91 92881 00260
                   </a>
                 </div>
               </li>

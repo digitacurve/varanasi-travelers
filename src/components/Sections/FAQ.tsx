@@ -31,7 +31,7 @@ export const FAQ: React.FC = () => {
         <div className="text-center mt-12 text-xs md:text-sm text-slate-500">
           Have more specific questions? Chat directly with an expert advisor.{" "}
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919288100260"
             className="text-accent-orange font-bold hover:underline"
             target="_blank"
             rel="noopener noreferrer"
@@ -39,8 +39,8 @@ export const FAQ: React.FC = () => {
             Chat on WhatsApp
           </a>{" "}
           or call{" "}
-          <a href="tel:+919876543210" className="text-accent-orange font-bold hover:underline">
-            +91 98765 43210
+          <a href="tel:+919288100260" className="text-accent-orange font-bold hover:underline">
+            +91 92881 00260
           </a>
         </div>
 

@@ -22,14 +22,14 @@ export const TopBar: React.FC = () => {
         {/* Right Side: Direct Contacts */}
         <div className="flex items-center gap-6">
           <a
-            href="tel:+919876543210"
+            href="tel:+919288100260"
             className="flex items-center gap-1.5 hover:text-accent-orange transition-colors duration-300"
           >
             <Phone size={14} className="text-accent-orange" />
-            <span className="font-semibold text-white">+91 98765 43210</span>
+            <span className="font-semibold text-white">+91 92881 00260</span>
           </a>
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919288100260"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 hover:text-[#25D366] transition-colors duration-300"

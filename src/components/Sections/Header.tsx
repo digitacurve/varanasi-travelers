@@ -50,12 +50,13 @@ export const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 group cursor-pointer">
+        <a href="#home" className="flex items-center gap-2 group cursor-pointer p-3 transition-colors duration-300">
           <div className="relative w-36 md:w-44 h-12 md:h-14">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo_transparent.png"
               alt="Varanasi Travelers Logo"
               fill
+              sizes="(max-width: 768px) 144px, 176px"
               className="object-contain object-left"
               priority
             />
@@ -82,10 +83,10 @@ export const Header: React.FC = () => {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => (window.location.href = "tel:+919876543210")}
+            onClick={() => (window.location.href = "tel:+919288100260")}
             icon={<Phone size={14} />}
           >
-            Call +91 98765 43210
+            Call +91 92881 00260
           </Button>
           <Button
             variant="solid"
@@ -131,11 +132,11 @@ export const Header: React.FC = () => {
               fullWidth
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                window.location.href = "tel:+919876543210";
+                window.location.href = "tel:+919288100260";
               }}
               icon={<Phone size={16} />}
             >
-              Call +91 98765 43210
+              Call +91 92881 00260
             </Button>
             <Button
               variant="solid"

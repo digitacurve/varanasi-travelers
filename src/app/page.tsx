@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { TopBar } from "@/components/Sections/TopBar";
+import { AnnouncementTicker } from "@/components/Sections/AnnouncementTicker";
 import { Header } from "@/components/Sections/Header";
 import { Hero } from "@/components/Sections/Hero";
 import { WhyChoose } from "@/components/Sections/WhyChoose";
@@ -34,7 +34,7 @@ export default function Home() {
         "name": "Divine Pilgrimages India",
         "image": "https://images.unsplash.com/photo-1561361513-2d000a50f0db?auto=format&fit=crop&q=80&w=800",
         "description": "Premium travel agency offering custom pilgrimage tour packages to Varanasi, Ayodhya, and Prayagraj with VIP Darshan and luxury hotels.",
-        "telephone": "+91-9876543210",
+        "telephone": "+91-9288100260",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Vishwanath Corridor Rd, near Dashashwamedh Ghat",
@@ -89,7 +89,7 @@ export default function Home() {
 
       <div className="flex flex-col min-h-screen">
         {/* Header and Top Utilities */}
-        <TopBar />
+        <AnnouncementTicker />
         <Header />
 
         {/* Main Content Layout */}

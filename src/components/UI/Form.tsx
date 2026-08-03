@@ -25,6 +25,22 @@ export const Form: React.FC<FormProps> = ({ compact = false, defaultPackageId = 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [lastSubmittedData, setLastSubmittedData] = useState<any>(null);
+
+  const handleWhatsAppContinue = () => {
+    if (!lastSubmittedData) return;
+    const pkgName = tourPackages.find(p => p.id === lastSubmittedData.packageId)?.name || lastSubmittedData.packageId;
+    const message = encodeURIComponent(
+      `Hello Varanasi Travelers! I just submitted an inquiry on your website:\n` +
+      `*Name:* ${lastSubmittedData.fullName}\n` +
+      `*Phone:* ${lastSubmittedData.phone}\n` +
+      `*Travel Date:* ${lastSubmittedData.travelDate}\n` +
+      `*Travellers:* ${lastSubmittedData.travellers}\n` +
+      `*Selected Package:* ${pkgName}\n` +
+      (lastSubmittedData.message ? `*Requirements:* ${lastSubmittedData.message}` : '')
+    );
+    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
+  };
 
   useEffect(() => {
     if (defaultPackageId) {
@@ -100,6 +116,7 @@ export const Form: React.FC<FormProps> = ({ compact = false, defaultPackageId = 
       console.error("Local storage error:", err);
     }
 
+    setLastSubmittedData(formData);
     setShowSuccess(true);
     setFormData({
       fullName: "",
@@ -336,13 +353,26 @@ export const Form: React.FC<FormProps> = ({ compact = false, defaultPackageId = 
                 </div>
               </div>
 
-              <Button
-                variant="solid"
-                fullWidth
-                onClick={() => setShowSuccess(false)}
-              >
-                Done
-              </Button>
+              <div className="flex flex-col gap-2.5">
+                <Button
+                  variant="solid"
+                  fullWidth
+                  onClick={handleWhatsAppContinue}
+                  className="bg-[#25D366] hover:bg-[#20ba56] text-white border-none flex items-center justify-center gap-2"
+                >
+                  <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.852.002-2.632-1.023-5.105-2.887-6.97C16.586 1.93 14.113.905 11.48.905c-5.44 0-9.867 4.42-9.87 9.855-.001 1.838.485 3.633 1.408 5.204l-1.066 3.9 3.99-1.047zm11.367-6.41c-.27-.135-1.595-.788-1.843-.877-.247-.09-.427-.135-.607.135-.18.27-.697.877-.855 1.057-.157.18-.315.202-.585.067-.27-.135-1.138-.42-2.167-1.34-1.008-.9-1.815-1.92-2.013-2.257-.198-.337-.021-.519.148-.687.152-.152.337-.393.506-.59.169-.197.225-.337.338-.562.112-.225.056-.42-.028-.59-.084-.169-.697-1.688-.955-2.31-.25-.6-.524-.515-.72-.524-.19-.01-.408-.01-.624-.01a1.2 1.2 0 00-.866.405c-.292.315-1.114 1.09-1.114 2.658 0 1.57 1.146 3.085 1.303 3.298.157.213 2.257 3.447 5.467 4.832.763.33 1.358.526 1.823.674.767.244 1.465.21 2.017.127.616-.093 1.596-.652 1.82-1.282.225-.63.225-1.17.157-1.283-.067-.113-.247-.203-.518-.338z"/>
+                  </svg>
+                  <span>Continue on WhatsApp</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  fullWidth
+                  onClick={() => setShowSuccess(false)}
+                >
+                  Done
+                </Button>
+              </div>
             </motion.div>
           </motion.div>
         )}

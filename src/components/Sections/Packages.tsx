@@ -8,12 +8,12 @@ interface PackagesProps {
   onSelectPackage: (pkgId: string) => void;
 }
 
-type FilterType = "All" | "Varanasi" | "Ayodhya" | "Prayagraj";
+type FilterType = "All" | "Varanasi" | "Ayodhya" | "Prayagraj" | "Ujjain";
 
 export const Packages: React.FC<PackagesProps> = ({ onSelectPackage }) => {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
-  const filterTabs: FilterType[] = ["All", "Varanasi", "Ayodhya", "Prayagraj"];
+  const filterTabs: FilterType[] = ["All", "Varanasi", "Ayodhya", "Prayagraj", "Ujjain"];
 
   const filteredPackages = tourPackages.filter((pkg) => {
     if (activeFilter === "All") return true;
@@ -33,7 +33,7 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage }) => {
             Curated Pilgrimage Package Experiences
           </h2>
           <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
-            Choose from our pre-planned premium itineraries covering Varanasi, Ayodhya, and Prayagraj. Every tour is fully customizable to your specific requirements.
+            Choose from our pre-planned premium itineraries covering Varanasi, Ayodhya, Prayagraj, and Ujjain. Every tour is fully customizable to your specific requirements.
           </p>
         </div>
 

@@ -22,14 +22,14 @@ export const FloatingCTA: React.FC = () => {
   }, []);
 
   const handleCall = () => {
-    window.location.href = "tel:+919876543210";
+    window.location.href = "tel:+919288100260";
   };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(
       "Hello! I am planning a pilgrimage tour to Varanasi, Ayodhya & Prayagraj. Please share customized package details."
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, "_blank");
+    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
   };
 
   return (

@@ -6,14 +6,14 @@ import { Button } from "../UI/Button";
 
 export const FinalCTA: React.FC = () => {
   const handleCall = () => {
-    window.location.href = "tel:+919876543210";
+    window.location.href = "tel:+919288100260";
   };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(
       "Hi, I am looking for custom pilgrimage packages to Varanasi, Ayodhya and Prayagraj."
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, "_blank");
+    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
   };
 
   const handleScrollToForm = () => {
@@ -52,7 +52,7 @@ export const FinalCTA: React.FC = () => {
             onClick={handleCall}
             icon={<Phone size={18} />}
           >
-            Call +91 98765 43210
+            Call +91 92881 00260
           </Button>
           <Button
             variant="white"

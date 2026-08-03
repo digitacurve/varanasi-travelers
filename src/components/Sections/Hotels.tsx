@@ -1,109 +1,94 @@
 "use client";
+import React, { useState } from "react";
 
-import React from "react";
-import Image from "next/image";
-import { Star, MapPin, Award } from "lucide-react";
-import { Button } from "../UI/Button";
-import { hotelDetails } from "@/data/content";
+interface HotelPartner {
+  name: string;
+  tagline: string;
+  style: string;
+  color: string;
+}
 
 export const Hotels: React.FC = () => {
-  const handleHotelInquiry = (hotelName: string) => {
-    const formElement = document.getElementById("inquiry-form-section");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const partners: HotelPartner[] = [
+    {
+      name: "BrijRama",
+      tagline: "Heritage Palace • Varanasi",
+      style: "font-serif tracking-[0.22em] text-xl md:text-2xl font-light italic",
+      color: "#C5A059", // Luxury Muted Gold
+    },
+    {
+      name: "TAJ GANGES",
+      tagline: "Varanasi",
+      style: "font-serif tracking-[0.18em] text-lg md:text-xl font-semibold",
+      color: "#8C7853", // Rich Bronze Gold
+    },
+    {
+      name: "RAMADA",
+      tagline: "by wyndham",
+      style: "font-sans tracking-[0.15em] text-xl md:text-2xl font-black uppercase",
+      color: "#DA291C", // Ramada Corporate Red
+    },
+    {
+      name: "park inn",
+      tagline: "by radisson",
+      style: "font-sans tracking-wide text-lg md:text-xl font-bold lowercase",
+      color: "#005A9C", // Park Inn Blue
+    },
+    {
+      name: "THE RAMAYANA",
+      tagline: "Hotel • Ayodhya",
+      style: "font-serif tracking-[0.2em] text-base md:text-lg font-medium",
+      color: "#FF6F06", // Brand Accent Orange (#FF6F06 is standard Orange)
+    },
+  ];
 
   return (
     <section id="hotels" className="py-20 md:py-28 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 px-4 py-1.5 rounded-full inline-block mb-3 tracking-widest">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 px-4 py-1.5 rounded-full inline-block mb-4 tracking-widest">
             Premium Accommodation
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
-            Handpicked Luxury Stays
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight uppercase">
+            Our Trusted Hotel Partners
           </h2>
-          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
-            We partner with the highest-rated properties in each city to guarantee clean rooms, modern amenities, pure vegetarian kitchens, and closeness to the holy sites.
+          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed max-w-2xl mx-auto">
+            We partner with carefully selected hotels across Ayodhya, Varanasi, Prayagraj, and Ujjain to provide clean rooms, comfortable stays, vegetarian dining options, and convenient access to major temples. Hotel allocation depends on your selected package and availability.
           </p>
         </div>
 
-        {/* Hotels Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {hotelDetails.map((hotel) => (
+        {/* Elegant Responsive Wordmarks Row */}
+        <div className="border-y border-slate-100 py-14 md:py-16 mt-8 flex flex-wrap items-center justify-center gap-y-12 gap-x-16 md:gap-x-24 lg:gap-x-28">
+          {partners.map((partner, index) => (
             <div
-              key={hotel.id}
-              className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_4px_24px_rgba(15,23,42,0.02)] hover:shadow-[0_16px_36px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="flex flex-col items-center justify-center text-center group cursor-pointer transition-all duration-500 ease-out hover:scale-[1.04]"
             >
-              {/* Hotel Image with Category Badge */}
-              <div className="relative h-64 w-full bg-slate-100 overflow-hidden">
-                <Image
-                  src={hotel.image}
-                  alt={hotel.name}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-                
-                <span className="absolute top-4 left-4 bg-dark-slate text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md font-display uppercase tracking-wider">
-                  {hotel.category} Stay
-                </span>
-
-                <div className="absolute bottom-4 left-4 right-4 flex items-center gap-1">
-                  <div className="flex text-amber-400">
-                    {Array.from({ length: Math.floor(hotel.rating) }).map((_, i) => (
-                      <Star key={i} size={14} className="fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-white text-xs font-bold ml-1">{hotel.rating}.0 Rating</span>
-                </div>
-              </div>
-
-              {/* Card Details */}
-              <div className="p-6 md:p-8 flex flex-col flex-1">
-                {/* Location */}
-                <div className="flex items-center gap-1 text-slate-500 mb-2">
-                  <MapPin size={14} className="text-accent-orange shrink-0" />
-                  <span className="text-xs font-medium uppercase tracking-wide">{hotel.location}</span>
-                </div>
-
-                {/* Hotel Name */}
-                <h4 className="text-lg md:text-xl font-display font-bold text-dark-slate mb-4 group-hover:text-accent-orange transition-colors">
-                  {hotel.name}
-                </h4>
-
-                {/* Amenities grid */}
-                <div className="space-y-2 flex-1 mb-6">
-                  <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">
-                    Property Highlights:
-                  </span>
-                  <ul className="grid grid-cols-1 gap-2">
-                    {hotel.amenities.map((amenity, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-slate-600 font-medium">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-orange shrink-0" />
-                        <span>{amenity}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Card Button */}
-                <div className="pt-6 border-t border-slate-50">
-                  <Button
-                    variant="outline"
-                    fullWidth
-                    onClick={() => handleHotelInquiry(hotel.name)}
-                    icon={<Award size={16} />}
-                  >
-                    Select in Package
-                  </Button>
-                </div>
-              </div>
+              {/* Hotel Wordmark Logo */}
+              <span
+                style={{
+                  color: hoveredIndex === index ? partner.color : "#94a3b8", // Slate-400 color
+                }}
+                className={`transition-colors duration-500 ease-in-out select-none ${partner.style}`}
+              >
+                {partner.name}
+              </span>
+              
+              {/* Tagline */}
+              <span
+                style={{
+                  color: hoveredIndex === index ? "#64748b" : "#cbd5e1", // Slate-500 vs Slate-300
+                }}
+                className="text-[9px] tracking-[0.25em] transition-colors duration-500 uppercase font-sans font-semibold mt-2.5"
+              >
+                {partner.tagline}
+              </span>
             </div>
           ))}
         </div>
@@ -112,3 +97,4 @@ export const Hotels: React.FC = () => {
     </section>
   );
 };
+

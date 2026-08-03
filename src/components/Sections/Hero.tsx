@@ -13,14 +13,14 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }) => {
   const handleCall = () => {
-    window.location.href = "tel:+919876543210";
+    window.location.href = "tel:+919288100260";
   };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(
       "Hi, I want to inquire about your Varanasi, Ayodhya & Prayagraj tour packages."
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, "_blank");
+    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
   };
 
   return (
