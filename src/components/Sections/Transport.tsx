@@ -15,7 +15,7 @@ export const Transport: React.FC = () => {
   };
 
   return (
-    <section id="transport" className="py-20 md:py-28 bg-slate-50/50 relative overflow-hidden">
+    <section id="transport" className="py-14 md:py-20 bg-transparent relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}

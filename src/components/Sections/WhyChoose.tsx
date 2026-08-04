@@ -21,7 +21,7 @@ export const WhyChoose: React.FC = () => {
   } as const;
 
   return (
-    <section id="why-choose-us" className="py-20 md:py-28 bg-slate-50/50 relative overflow-hidden">
+    <section id="why-choose-us" className="py-14 md:py-20 bg-transparent relative overflow-hidden">
       {/* Background blurs */}
       <div className="absolute top-1/3 right-0 w-80 h-80 bg-accent-orange/5 rounded-full filter blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-indigo-50/50 rounded-full filter blur-[100px] pointer-events-none" />

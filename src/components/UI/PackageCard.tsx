@@ -2,71 +2,90 @@
 
 import React from "react";
 import Image from "next/image";
-import { Clock, MapPin, CheckCircle, ArrowRight } from "lucide-react";
+import { Clock, MapPin, Building2, Car, Compass, Headphones, CheckCircle2 } from "lucide-react";
 import { Button } from "./Button";
-import { Package } from "@/data/content";
+import { ExtendedPackage } from "@/data/extendedPackages";
 
 interface PackageCardProps {
-  pkg: Package;
+  pkg: ExtendedPackage;
   onSelect: (pkgId: string) => void;
+  onViewDetails: (pkg: ExtendedPackage) => void;
 }
 
-export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect }) => {
-  const formattedPrice = new Intl.NumberFormat("en-IN", {
-    maximumFractionDigits: 0,
-  }).format(pkg.startingPrice);
+export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewDetails }) => {
+  const formattedPrice = pkg.startingPrice
+    ? new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 }).format(pkg.startingPrice)
+    : "";
 
   const handleGetQuote = () => {
-    onSelect(pkg.id);
-    const formElement = document.getElementById("inquiry-form-section");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth" });
+    if (pkg.isComingSoon) return;
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "Package CTA Click",
+        packageId: pkg.id,
+        packageName: pkg.name,
+        ctaType: "Get Full Itinerary"
+      });
     }
+    window.location.href = `/packages/${pkg.id.replace("-tour-package", "")}`;
   };
 
-  const handleBookNow = () => {
-    const message = encodeURIComponent(
-      `Hello! I would like to book the "${pkg.name}" (${pkg.duration}). Please send me the itinerary.`
-    );
-    window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
+  // Define tag styling map
+  const tagStyles = {
+    "Best Seller": "from-red-500 via-accent-orange to-orange-600 shadow-red-500/20",
+    "Most Popular": "from-amber-400 via-amber-500 to-orange-500 shadow-amber-500/20",
+    "Premium": "from-amber-600 via-yellow-600 to-amber-800 shadow-yellow-600/20",
+    "Family Favourite": "from-teal-500 via-emerald-500 to-green-600 shadow-teal-500/20",
+    "New": "from-blue-500 via-indigo-500 to-violet-600 shadow-indigo-500/20"
+  };
+
+  const tagEmoji = {
+    "Best Seller": "🔥",
+    "Most Popular": "⭐",
+    "Premium": "💎",
+    "Family Favourite": "👨👩👧",
+    "New": "✨"
   };
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)] transition-all duration-500 flex flex-col h-full transform hover:-translate-y-2">
-      {/* Image and Tag */}
-      <div className="relative h-64 w-full overflow-hidden bg-slate-100">
+    <div className="group bg-[#FFFDF9] rounded-[2.5rem] overflow-hidden border border-orange-100/50 shadow-[0_8px_30px_rgba(249,115,22,0.02)] hover:shadow-[0_24px_50px_rgba(249,115,22,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col h-full relative">
+      {/* Image Container with Hover Zoom */}
+      <div className="relative h-56 md:h-60 w-full overflow-hidden bg-orange-50">
         <Image
           src={pkg.image}
           alt={pkg.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+          className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+
+        {/* Floating Custom Badge */}
         {pkg.tag && (
-          <span className="absolute top-4 left-4 bg-accent-orange text-white text-xs font-semibold px-4 py-1.5 rounded-full shadow-md font-display uppercase tracking-wider">
-            {pkg.tag}
+          <span className={`absolute top-5 left-5 bg-gradient-to-r ${tagStyles[pkg.tag] || "from-amber-500 to-orange-500"} text-white text-[10px] md:text-xs font-extrabold px-3 py-1.5 rounded-xl shadow-lg flex items-center gap-1.5 select-none tracking-wider uppercase`}>
+            <span>{tagEmoji[pkg.tag]}</span>
+            <span>{pkg.tag}</span>
           </span>
         )}
 
-        <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-white">
-          <div className="flex items-center gap-1 bg-slate-950/50 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium">
-            <Clock size={12} className="text-accent-orange" />
-            <span>{pkg.duration}</span>
-          </div>
+        {/* Floating Duration Indicator */}
+        <div className="absolute bottom-5 right-5 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-xl text-white text-xs font-semibold flex items-center gap-1.5 select-none shadow-sm">
+          <Clock size={13} className="text-amber-400" />
+          <span>{pkg.duration}</span>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="p-6 md:p-8 flex flex-col flex-1">
-        {/* Destination Badges */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
+      {/* Card Content body */}
+      <div className="p-6 md:p-8 flex flex-col flex-grow text-left">
+        
+        {/* Destination tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3 select-none">
           {pkg.destinations.map((dest, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-1 text-[10px] uppercase font-semibold tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded"
+              className="inline-flex items-center gap-1 text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 bg-orange-50 border border-orange-100/50 px-2.5 py-0.5 rounded-md"
             >
               <MapPin size={10} className="text-accent-orange" />
               {dest}
@@ -74,63 +93,128 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect }) => {
           ))}
         </div>
 
-        {/* Package Title */}
-        <h4 className="text-lg md:text-xl font-display font-bold text-dark-slate mb-3 group-hover:text-accent-orange transition-colors line-clamp-2">
+        {/* Title */}
+        <h3 className="text-xl md:text-2xl font-display font-black text-slate-900 group-hover:text-accent-orange transition-colors duration-300 line-clamp-1 mb-1 tracking-tight">
           {pkg.name}
-        </h4>
+        </h3>
 
-        {/* Short description */}
-        <p className="text-xs md:text-sm text-slate-500 mb-5 leading-relaxed line-clamp-3">
-          {pkg.description}
+        {/* One-Line Subtitle */}
+        <p className="text-xs text-slate-500 font-semibold italic mb-5 line-clamp-1">
+          {pkg.subtitle}
         </p>
 
-        {/* Highlights */}
-        <div className="space-y-2 mb-6 flex-1">
-          <span className="text-xs uppercase font-bold text-slate-400 tracking-wider block mb-2">
-            Tour Highlights:
-          </span>
-          <ul className="space-y-1.5 text-xs text-slate-600 font-medium">
-            {pkg.highlights.slice(0, 4).map((high, i) => (
-              <li key={i} className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-orange shrink-0 mt-1.5" />
-                <span className="line-clamp-2 leading-relaxed">{high}</span>
+        {/* Four Quick Service Icons */}
+        <div className="grid grid-cols-2 gap-3 mb-5 border-y border-orange-100/30 py-3.5 bg-orange-50/20 rounded-2xl px-4 select-none">
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+            <Car size={14} className="text-accent-orange shrink-0" />
+            <span className="truncate">AC Transfer</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+            <Building2 size={14} className="text-accent-orange shrink-0" />
+            <span className="truncate">Best Hotel</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+            <Compass size={14} className="text-accent-orange shrink-0" />
+            <span className="truncate">Sightseeing</span>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+            <Headphones size={14} className="text-accent-orange shrink-0" />
+            <span className="truncate">24x7 Support</span>
+          </div>
+        </div>
+
+        {/* Lock Price Box */}
+        {!pkg.isComingSoon && pkg.lockPrice && (
+          <div className="border border-dashed border-orange-300 bg-orange-50/50 px-4 py-2.5 rounded-xl text-center text-[9px] font-black text-slate-800 tracking-wide mb-5 flex items-center justify-center gap-1.5 select-none">
+            <span>🔒</span>
+            <span>LOCK PRICE FOR ₹{pkg.lockPrice}</span>
+          </div>
+        )}
+        {pkg.isComingSoon && (
+          <div className="border border-dashed border-slate-200 bg-slate-50 px-4 py-2.5 rounded-xl text-center text-[9px] font-black text-slate-400 tracking-wide mb-5 flex items-center justify-center gap-1.5 select-none">
+            <span>📅</span>
+            <span>LAUNCH RATES RELEASING SOON</span>
+          </div>
+        )}
+
+        {/* Pricing Segment */}
+        <div className="mb-5 select-none">
+          <div className="flex flex-col text-left">
+            {pkg.isComingSoon ? (
+              <div className="py-2.5">
+                <span className="text-xl font-display font-black text-slate-400 uppercase tracking-wide">
+                  Coming Soon
+                </span>
+                <span className="text-[9px] text-slate-400 mt-1 font-bold block">
+                  Launch rates and details are currently in compilation.
+                </span>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-400 line-through font-semibold">
+                    ₹{new Intl.NumberFormat("en-IN").format(pkg.originalPrice || 0)}
+                  </span>
+                  <span className="text-[9px] font-black text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                    Save {Math.round((1 - (pkg.startingPrice || 0)/(pkg.originalPrice || 1))*100)}%
+                  </span>
+                </div>
+                <span className="text-3xl font-display font-black text-slate-900 tracking-tight mt-0.5">
+                  ₹{formattedPrice}
+                  <span className="text-xs text-slate-400 font-bold ml-1 uppercase">/ person</span>
+                </span>
+                <span className="text-[9px] text-slate-400 mt-1.5 font-bold block leading-relaxed">
+                  *Excluding GST (5%) & monument entries.
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Included highlights list */}
+        <div className="mb-6 flex-grow text-left">
+          <ul className="space-y-2 text-xs text-slate-600 font-bold select-none">
+            {pkg.highlights.map((item, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <CheckCircle2 size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                <span className="leading-relaxed">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Price & Actions */}
-        <div className="pt-6 border-t border-slate-100 flex items-center justify-between gap-4 mt-auto">
-          <div>
-            <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider">
-              Starting From
-            </span>
-            <span className="text-2xl font-display font-extrabold text-dark-slate">
-              ₹{formattedPrice}
-              <span className="text-xs text-slate-400 font-normal ml-0.5">*pp</span>
-            </span>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-2 shrink-0">
+        {/* CTA Button and view details triggers */}
+        <div className="space-y-2.5">
+          {pkg.isComingSoon ? (
             <Button
               variant="outline"
-              size="sm"
-              onClick={handleGetQuote}
-              className="text-xs"
+              fullWidth
+              disabled
+              className="border border-slate-200 text-slate-400 bg-slate-50 font-extrabold py-4 rounded-xl select-none cursor-not-allowed text-xs flex items-center justify-center"
             >
-              Get Quote
+              Coming Soon
             </Button>
+          ) : (
             <Button
               variant="solid"
-              size="sm"
-              onClick={handleBookNow}
-              className="text-xs"
-              icon={<ArrowRight size={12} />}
+              fullWidth
+              onClick={handleGetQuote}
+              className="bg-gradient-to-r from-amber-500 via-accent-orange to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-extrabold shadow-[0_4px_14px_rgba(249,115,22,0.2)] hover:shadow-[0_8px_20px_rgba(249,115,22,0.35)] py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.01] text-xs flex items-center justify-center"
             >
-              Book Now
+              Get Full Itinerary
             </Button>
-          </div>
+          )}
+          
+          {!pkg.isComingSoon && (
+            <button
+              onClick={handleGetQuote}
+              className="w-full text-center text-xs font-bold text-slate-500 hover:text-slate-800 transition-colors py-1 hover:underline cursor-pointer select-none"
+            >
+              View Full Itinerary & Details
+            </button>
+          )}
         </div>
+
       </div>
     </div>
   );

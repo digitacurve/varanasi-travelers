@@ -22,21 +22,23 @@ export const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Why Us", href: "#why-choose-us" },
-    { name: "Packages", href: "#packages" },
-    { name: "Hotels", href: "#hotels" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Reviews", href: "#reviews" },
-    { name: "FAQs", href: "#faq" },
+    { name: "Home", href: "/#home" },
+    { name: "Why Us", href: "/#why-choose-us" },
+    { name: "Packages", href: "/#packages" },
+    { name: "Hotels", href: "/#hotels" },
+    { name: "Gallery", href: "/#gallery" },
+    { name: "Reviews", href: "/#reviews" },
+    { name: "FAQs", href: "/#faq" },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setIsMobileMenuOpen(false);
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+    if (typeof window !== "undefined" && window.location.pathname === "/") {
+      e.preventDefault();
+      setIsMobileMenuOpen(false);
+      const targetElement = document.querySelector(href.replace("/", ""));
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 

@@ -3,7 +3,7 @@ export interface Package {
   name: string;
   duration: string;
   destinations: string[];
-  startingPrice: number;
+  startingPrice?: number;
   description: string;
   highlights: string[];
   inclusions: string[];
@@ -90,143 +90,9 @@ export const whyChooseItems: WhyChooseItem[] = [
   },
 ];
 
-export const tourPackages: Package[] = [
-  {
-    id: 'weekend-ayodhya',
-    name: 'Weekend Ayodhya Tour Package',
-    duration: '2 Nights / 3 Days',
-    destinations: ['Ayodhya'],
-    startingPrice: 5999,
-    description: 'A dedicated spiritual retreat to Ayodhya Dham. Experience the divine glory of Ram Janmabhoomi and seek blessings at the newly built majestic temple complex.',
-    highlights: [
-      'Ram Janmabhoomi Temple VIP Darshan & Puja',
-      'Mesmerizing evening Saryu River Aarti',
-      'Seek blessings at Hanuman Garhi & Kanak Bhawan',
-      'Tour of historical Dashrath Mahal and local ghats',
-    ],
-    inclusions: ['Boutique Hotel Stay', 'Daily Veg Breakfast', 'Private AC Cab for transit', 'Local Tour Coordinator', 'Assisted temple entries'],
-    image: '/images/Ayodhya-tour1.png',
-    tag: 'Weekend Special',
-  },
-  {
-    id: 'ayodhya-varanasi-prayagraj',
-    name: 'Ayodhya Varanasi Prayagraj Tour',
-    duration: '4 Nights / 5 Days',
-    destinations: ['Varanasi', 'Prayagraj', 'Ayodhya'],
-    startingPrice: 9500,
-    description: 'Seek blessings across Uttar Pradesh\'s holy trinity. Experience the Ganga Aarti of Kashi, take a holy dip in the Sangam, and offer prayers at Ayodhya Ram Mandir.',
-    highlights: [
-      'Kashi Vishwanath Corridor tour & Ganga Aarti in Varanasi',
-      'Holy bath at Triveni Sangam and Hanuman Temple in Prayagraj',
-      'Exclusive Ram Mandir VIP Darshan in Ayodhya Dham',
-      'Morning boat ride along the historic ghats of Benares',
-    ],
-    inclusions: ['Premium Hotels (4 Nights)', 'Breakfast & Dinner', 'Private Chauffeur AC Cab', 'VIP Darshan Assistance', 'Boat Ride Tickets'],
-    image: '/images/Ayodhya-tour2.png',
-    tag: 'Best Seller',
-  },
-  {
-    id: 'varanasi-chitrakoot-ayodhya',
-    name: 'Varanasi Chitrakoot Ayodhya Tour',
-    duration: '5 Nights / 6 Days',
-    destinations: ['Varanasi', 'Prayagraj', 'Chitrakoot', 'Ayodhya'],
-    startingPrice: 12499,
-    description: 'Follow the sacred footprints of Lord Rama during his exile in Chitrakoot, unified with the spiritual essence of Varanasi, Ayodhya, and Prayagraj.',
-    highlights: [
-      'Spiritual exploration of Chitrakoot exile sites (Ram Ghat, Kamadgiri)',
-      'Triveni Sangam holy bath and Hanuman temple in Prayagraj',
-      'Divine morning Subah-e-Benares boat ride in Varanasi',
-      'Ram Janmabhoomi and Kanak Bhawan darshan in Ayodhya Dham',
-    ],
-    inclusions: ['Deluxe Stays (5 Nights)', 'Satvik Breakfast & Dinner', 'Private AC Executive Vehicle', 'Special Puja Facilitator', 'All local entries'],
-    image: '/images/Ayodhya-tour3.png',
-    tag: 'Spiritual Trail',
-  },
-  {
-    id: 'ayodhya-naimisharanya',
-    name: 'Ayodhya Varanasi Tour Package',
-    duration: '2 Nights / 3 Days',
-    destinations: ['Ayodhya', 'Naimisharanya'],
-    startingPrice: 6499,
-    description: 'Seek blessings at Ram Janmabhoomi in Ayodhya Dham and take a day excursion to Naimisharanya forest, the home of Puranic wisdom and the Chakra Kund.',
-    highlights: [
-      'VIP Darshan at Ram Janmabhoomi Mandir',
-      'Day trip to Naimisharanya sacred Chakra Tirth',
-      'Offer prayers at Hanuman Garhi and Kanak Bhawan',
-      'Evening walk and sound show along the Saryu River',
-    ],
-    inclusions: ['Comfort Deluxe Hotel (2 Nights)', 'Daily Veg Breakfast', 'Private AC Sedan/SUV', 'Puja Priest Coordination', 'Taxes & Tolls'],
-    image: '/images/Ayodhya-tour4.png',
-  },
-  {
-    id: 'up-pilgrimage-grand',
-    name: 'Uttar Pradesh Pilgrimage Tour',
-    duration: '6 Nights / 7 Days',
-    destinations: ['Ayodhya', 'Prayagraj', 'Chitrakoot', 'Varanasi', 'Bodh Gaya'],
-    startingPrice: 14799,
-    description: 'A comprehensive pilgrimage tour connecting the historical hubs of Hinduism and Buddhism, covering Kashi, Ayodhya, Chitrakoot, and Bodh Gaya.',
-    highlights: [
-      'Mahabodhi temple and sacred Bodhi Tree tour in Bodh Gaya',
-      'Kashi Vishwanath Corridor and morning ghat ride in Varanasi',
-      'Triveni Sangam snan in Prayagraj & Chitrakoot darshan',
-      'Ram Mandir Darshan and local sightseeing in Ayodhya Dham',
-    ],
-    inclusions: ['Selected 3/4-Star Hotels (6 Nights)', 'Breakfast & Dinner', 'Chauffeur-Driven AC Vehicle', 'Local Guides in all cities', 'Border Permits & Tolls'],
-    image: '/images/Ayodhya-tour5.png',
-    tag: 'Grand Yatra',
-  },
-  {
-    id: 'divine-trails-up',
-    name: 'Divine Trails Uttar Pradesh Tour',
-    duration: '7 Nights / 8 Days',
-    destinations: ['Lucknow', 'Ayodhya', 'Prayagraj', 'Chitrakoot', 'Varanasi', 'Bodh Gaya'],
-    startingPrice: 16499,
-    description: 'The ultimate spiritual circuit. Cover historic Lucknow, the epic Ram Mandir, holy Sangam, Chitrakoot hills, old Kashi Vishwanath, and serene Bodh Gaya.',
-    highlights: [
-      'Lucknow Bara Imambara heritage walk & sightseeing',
-      'Exclusive Ram Mandir VIP Darshan in Ayodhya Dham',
-      'Sangam Snan in Prayagraj and pilgrimage trail of Chitrakoot',
-      'Varanasi Ganga Aarti & Mahabodhi Buddhist Temple in Bodh Gaya',
-    ],
-    inclusions: ['Premium Hotels (7 Nights)', 'Daily Satvik Meals', 'Toyota Innova Crysta / Luxury Traveller', 'Vedic Scholar Guide', 'Private Rituals Priest'],
-    image: '/images/Ayodhya-tour6.png',
-    tag: 'Premium Luxury',
-  },
-  {
-    id: 'mahakal-ujjain',
-    name: 'Mahakal Ujjain Tour Package',
-    duration: '1 Night / 2 Days',
-    destinations: ['Ujjain'],
-    startingPrice: 4200,
-    description: 'Seek blessings at Shri Mahakaleshwar Jyotirlinga and walk the grand Mahakal Lok corridor. Enjoy evening Aarti at Ram Ghat and explore holy temples in Ujjain.',
-    highlights: [
-      'VIP Darshan at Shri Mahakaleshwar Jyotirlinga Temple',
-      'Walk through the spectacular Mahakal Lok Corridor',
-      'Experience the evening Shipra River Aarti at Ram Ghat',
-      'Visit Bade Ganesh, Harsiddhi Mata, & Kal Bhairav temples',
-    ],
-    inclusions: ['Hotel Stay', 'Hygienic Veg Breakfast', 'Private AC Cab for sightseeing', 'Driver Allowance & Tolls', 'Pickup & Drop assistance'],
-    image: '/images/Ujjain-tour1.png',
-    tag: 'Weekend Special',
-  },
-  {
-    id: 'mahakal-omkareshwar',
-    name: 'Mahakal + Omkareshwar Package',
-    duration: '2 Nights / 3 Days',
-    destinations: ['Ujjain', 'Omkareshwar'],
-    startingPrice: 9000,
-    description: 'A sacred journey covering two major Jyotirlingas in Madhya Pradesh. Offer prayers at Mahakaleshwar in Ujjain and Omkareshwar Temple on Mandhata Island.',
-    highlights: [
-      'Darshan at Mahakaleshwar and Omkareshwar Jyotirlingas',
-      'Visit Mamleshwar Temple and take a holy dip at Narmada Ghat',
-      'Explore Ujjain local shrines like Kal Bhairav & Mangalnath',
-      'Comfortable intercity transit in a private air-conditioned cab',
-    ],
-    inclusions: ['Hotel Stay (Ujjain & Omkareshwar)', 'Veg Breakfast', 'Private AC Cab for transit', 'Driver Allowance & Tolls', 'Excursion & local transfers'],
-    image: '/images/Omkareshwar-tour1.png',
-    tag: 'Best Seller',
-  },
-];
+import { extendedPackages } from "./extendedPackages";
+
+export const tourPackages: Package[] = extendedPackages;
 
 
 export const vehicles: Vehicle[] = [

@@ -7,7 +7,7 @@ import { reviews } from "@/data/content";
 
 export const Reviews: React.FC = () => {
   return (
-    <section id="reviews" className="py-20 md:py-28 bg-slate-50/50 relative overflow-hidden">
+    <section id="reviews" className="py-14 md:py-20 bg-transparent relative overflow-hidden">
       {/* Background blurs */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent-orange/5 rounded-full filter blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-indigo-50 rounded-full filter blur-[120px] pointer-events-none" />

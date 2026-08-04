@@ -1,10 +1,18 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Phone, MessageCircle } from "lucide-react";
+import { Phone, MessageCircle, Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const FloatingCTA: React.FC = () => {
+interface FloatingCTAProps {
+  packageId?: string;
+  packageName?: string;
+}
+
+export const FloatingCTA: React.FC<FloatingCTAProps> = ({ 
+  packageId = "general", 
+  packageName = "General" 
+}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -22,14 +30,46 @@ export const FloatingCTA: React.FC = () => {
   }, []);
 
   const handleCall = () => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "Phone Click",
+        packageId,
+        packageName
+      });
+    }
     window.location.href = "tel:+919288100260";
   };
 
   const handleWhatsApp = () => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "WhatsApp Click",
+        packageId,
+        packageName
+      });
+    }
     const message = encodeURIComponent(
-      "Hello! I am planning a pilgrimage tour to Varanasi, Ayodhya & Prayagraj. Please share customized package details."
+      `Hello! I am planning a pilgrimage tour (${packageName}). Please share customized package details.`
     );
     window.open(`https://wa.me/919288100260?text=${message}`, "_blank");
+  };
+
+  const handleScrollToForm = () => {
+    if (typeof window !== "undefined") {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: "Package CTA Click",
+        packageId,
+        packageName,
+        ctaType: "Get Quote"
+      });
+    }
+    const formElement = document.getElementById("inquiry-form-section");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -52,21 +92,47 @@ export const FloatingCTA: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Mobile Sticky Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-4px_20px_rgba(15,23,42,0.05)] px-4 py-3 flex gap-3">
+      {/* Desktop Floating Get Quote Button (Left Side) */}
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            onClick={handleScrollToForm}
+            className="fixed bottom-8 left-8 z-40 hidden md:flex items-center gap-2 bg-gradient-to-r from-amber-500 to-accent-orange text-white px-5 py-3.5 rounded-full shadow-[0_4px_24px_rgba(249,115,22,0.3)] hover:shadow-[0_8px_30px_rgba(249,115,22,0.5)] transition-all duration-300 group cursor-pointer font-semibold text-sm"
+            aria-label="Get Free Quote"
+          >
+            <Calendar size={18} />
+            <span>Get Free Quote</span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Sticky Bottom Bar (Always visible on mobile/tablet) */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#FFFDF9]/95 backdrop-blur-md border-t border-orange-100/50 shadow-[0_-4px_20px_rgba(15,23,42,0.05)] px-4 py-3 flex gap-2">
         <button
           onClick={handleCall}
-          className="flex-1 flex items-center justify-center gap-2 bg-dark-slate text-white py-3.5 rounded-2xl font-display font-semibold text-sm shadow-[0_4px_12px_rgba(15,23,42,0.15)] active:scale-[0.98] transition-transform"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-slate-900 text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
         >
-          <Phone size={16} />
+          <Phone size={14} />
           <span>Call Now</span>
         </button>
+        
         <button
           onClick={handleWhatsApp}
-          className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white py-3.5 rounded-2xl font-display font-semibold text-sm shadow-[0_4px_12px_rgba(37,211,102,0.2)] active:scale-[0.98] transition-transform"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
         >
-          <MessageCircle size={16} className="fill-white" />
+          <MessageCircle size={14} className="fill-white" />
           <span>WhatsApp</span>
+        </button>
+
+        <button
+          onClick={handleScrollToForm}
+          className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-accent-orange text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
+        >
+          <Calendar size={14} />
+          <span>Get Quote</span>
         </button>
       </div>
     </>

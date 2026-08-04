@@ -24,7 +24,7 @@ export const FinalCTA: React.FC = () => {
   };
 
   return (
-    <section className="py-20 md:py-24 bg-dark-slate relative overflow-hidden">
+    <section className="py-14 md:py-18 bg-dark-slate relative overflow-hidden">
       {/* Decorative background overlay */}
       <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{
         backgroundImage: "url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=1920')"

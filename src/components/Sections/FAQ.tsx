@@ -6,7 +6,7 @@ import { faqs } from "@/data/content";
 
 export const FAQ: React.FC = () => {
   return (
-    <section id="faq" className="py-20 md:py-28 bg-white relative">
+    <section id="faq" className="py-14 md:py-20 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}

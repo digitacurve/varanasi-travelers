@@ -45,7 +45,7 @@ export const Hotels: React.FC = () => {
   ];
 
   return (
-    <section id="hotels" className="py-20 md:py-28 bg-white relative">
+    <section id="hotels" className="py-14 md:py-20 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
@@ -62,7 +62,7 @@ export const Hotels: React.FC = () => {
         </div>
 
         {/* Elegant Responsive Wordmarks Row */}
-        <div className="border-y border-slate-100 py-14 md:py-16 mt-8 flex flex-wrap items-center justify-center gap-y-12 gap-x-16 md:gap-x-24 lg:gap-x-28">
+        <div className="border-y border-slate-100 py-10 md:py-12 mt-8 flex flex-wrap items-center justify-center gap-y-12 gap-x-16 md:gap-x-24 lg:gap-x-28">
           {partners.map((partner, index) => (
             <div
               key={index}

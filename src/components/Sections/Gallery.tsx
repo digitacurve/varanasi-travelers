@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect, useRef } from "react";
 import { ZoomIn } from "lucide-react";
 import { galleryImages } from "@/data/content";
 import { Lightbox } from "../UI/Lightbox";
@@ -11,6 +10,12 @@ type GalleryCategory = "All" | "Varanasi" | "Ayodhya" | "Prayagraj" | "Ujjain";
 export const Gallery: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<number | null>(null);
+  const dragOffsetRef = useRef<number>(0);
 
   const categories: GalleryCategory[] = ["All", "Varanasi", "Ayodhya", "Prayagraj", "Ujjain"];
 
@@ -19,8 +24,11 @@ export const Gallery: React.FC = () => {
     return img.category === activeCategory;
   });
 
+  // Duplicate images to create an infinite horizontal loop
+  const displayImages = [...filteredImages, ...filteredImages, ...filteredImages];
+
   const openLightbox = (index: number) => {
-    setLightboxIndex(index);
+    setLightboxIndex(index % filteredImages.length);
   };
 
   const closeLightbox = () => {
@@ -37,8 +45,56 @@ export const Gallery: React.FC = () => {
     setLightboxIndex((prev) => (prev !== null && prev < filteredImages.length - 1 ? prev + 1 : 0));
   };
 
+  // Mobile manual swipe support
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartRef.current === null) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - touchStartRef.current;
+    
+    // Shift drag offset
+    dragOffsetRef.current = dragOffsetRef.current + diff;
+    setDragOffset(dragOffsetRef.current);
+    touchStartRef.current = currentX;
+  };
+
+  const handleTouchEnd = () => {
+    touchStartRef.current = null;
+    // Resume auto scroll slowly after a brief delay
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 1500);
+  };
+
+  // Reset drag offset when active category changes to prevent visual issues
+  useEffect(() => {
+    dragOffsetRef.current = 0;
+    setDragOffset(0);
+  }, [activeCategory]);
+
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-white relative">
+    <section id="gallery" className="py-14 md:py-20 bg-transparent relative select-none">
+      
+      {/* Dynamic CSS marquee rules */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.3333%); }
+        }
+        .animate-marquee-scroll {
+          display: flex;
+          width: max-content;
+          animation: marquee 40s linear infinite;
+        }
+        .animate-marquee-paused {
+          animation-play-state: paused !important;
+        }
+      `}} />
+
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
@@ -71,39 +127,48 @@ export const Gallery: React.FC = () => {
           ))}
         </div>
 
-        {/* Masonry-style Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredImages.map((img, i) => (
+      </div>
+
+      {/* Marquee Carousel Wrapper */}
+      <div 
+        ref={containerRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="w-full overflow-hidden relative cursor-grab active:cursor-grabbing py-4"
+      >
+        <div 
+          className={`animate-marquee-scroll flex gap-6 ${isPaused ? "animate-marquee-paused" : ""}`}
+          style={{ transform: dragOffset !== 0 ? `translateX(${dragOffset}px)` : undefined }}
+        >
+          {displayImages.map((img, i) => (
             <div
-              key={img.id}
+              key={`${img.id}-${i}`}
               onClick={() => openLightbox(i)}
-              className="relative group rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer h-72 w-full bg-slate-100"
+              className="relative h-64 md:h-80 w-80 shrink-0 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-orange-950/[0.03] transition-all duration-500 cursor-pointer bg-slate-100 border border-slate-100"
             >
-              <Image
+              <img
                 src={img.url}
                 alt={img.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover pointer-events-none"
                 loading="lazy"
               />
               
               {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6" />
-
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-accent-orange bg-orange-950/20 px-2 py-0.5 rounded backdrop-blur-md inline-block mb-2">
+              <div className="absolute inset-0 bg-slate-950/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <span className="text-[10px] uppercase font-bold tracking-widest text-accent-orange bg-orange-950/20 px-2 py-0.5 rounded backdrop-blur-md inline-block mb-2 self-start">
                   {img.category}
                 </span>
-                <h4 className="text-base font-display font-bold leading-tight flex items-center gap-1.5">
+                <h4 className="text-base font-display font-bold text-white leading-tight flex items-center gap-1.5">
                   {img.title}
-                  <ZoomIn size={16} className="text-accent-orange shrink-0" />
+                  <ZoomIn size={16} className="text-accent-orange shrink-0 animate-pulse" />
                 </h4>
               </div>
             </div>
           ))}
         </div>
-
       </div>
 
       {/* Lightbox Trigger */}
