@@ -46,19 +46,19 @@ export const Header: React.FC = () => {
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-500 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-md py-3 border-b border-slate-100"
-          : "bg-white/95 py-5"
+          ? "bg-white/80 backdrop-blur-md shadow-md py-2 md:py-3 border-b border-slate-100"
+          : "bg-white/95 py-2.5 md:py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2 group cursor-pointer p-3 transition-colors duration-300">
-          <div className="relative w-36 md:w-44 h-12 md:h-14">
+        <a href="#home" className="flex items-center gap-2 group cursor-pointer p-1 md:p-3 transition-colors duration-300">
+          <div className="relative w-[130px] md:w-44 h-[42px] md:h-14">
             <Image
               src="/images/logo_transparent.png"
               alt="Varanasi Travelers Logo"
               fill
-              sizes="(max-width: 768px) 144px, 176px"
+              sizes="(max-width: 768px) 130px, 176px"
               className="object-contain object-left"
               priority
             />
