@@ -57,6 +57,16 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
       subtitle: "Seek blessings at Shri Mahakaleshwar Jyotirlinga and explore Mahakal Lok.",
       cta: "Get Free Itinerary",
       bgImage: "/images/gallery/ujjain_mahakaleshwar_temple.webp",
+    },
+    {
+      id: "ayodhya-darshan-tour-package",
+      packageName: "Ayodhya Darshan",
+      duration: "1 Night / 2 Days",
+      price: "Starting From ₹4,999 / Person",
+      destination: "Ayodhya",
+      subtitle: "Seek blessings at Shri Ram Janmabhoomi Mandir, witness evening Saryu Aarti, and explore Ayodhya Dham.",
+      cta: "Get Free Itinerary",
+      bgImage: "/images/gallery/ayodhya_ram_mandir_day.webp",
     }
   ];
 

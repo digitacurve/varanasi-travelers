@@ -1173,5 +1173,113 @@ export const extendedPackages: ExtendedPackage[] = [
         description: 'Enjoy breakfast. You can optionally complete the Omkareshwar Parikrama. Visit local temples and nearby spiritual attractions if time permits. Complete hotel checkout and transfer to Indore Airport / Railway Station or Ujjain Railway Station to board your departure transit. Tour ends.'
       }
     ]
+  },
+  {
+    id: 'ayodhya-darshan-tour-package',
+    name: 'Ayodhya Darshan',
+    subtitle: 'Seek blessings at Shri Ram Janmabhoomi Mandir, Kanak Bhawan, Hanuman Garhi, and witness the divine Saryu Aarti.',
+    tag: 'New',
+    duration: '1 Night / 2 Days',
+    destinations: ['Ayodhya'],
+    startingPrice: 4999,
+    originalPrice: 7999,
+    lockPrice: 1999,
+    description: 'Experience the divine spirit of Ayodhya Dham with a carefully planned pilgrimage covering the grand Shri Ram Janmabhoomi Mandir, Hanuman Garhi, Kanak Bhawan, Dashrath Mahal, and the peaceful evening Saryu River Aarti. Enjoy comfortable hotel accommodation, private AC vehicle transits, and complete on-ground assistance.',
+    highlights: [
+      'Ram Janmabhoomi Darshan',
+      'Evening Saryu Aarti',
+      'Premium Hotel Stay',
+      'Private AC Cab',
+      'Comfortable Family Tour',
+      'Spiritual Guided Experience',
+      'Perfect Weekend Pilgrimage'
+    ],
+    inclusions: [
+      'Hotel Accommodation',
+      'Daily Breakfast',
+      'Private AC Cab',
+      'Pickup & Drop',
+      'Sightseeing as per itinerary',
+      'Driver Allowance',
+      'Toll Tax & Parking',
+      'All Fuel Charges',
+      'Tour Assistance'
+    ],
+    exclusions: [
+      'Airfare / Train Tickets',
+      'Lunch & Dinner',
+      'VIP Darshan Charges',
+      'Personal Expenses',
+      'Camera Charges',
+      'Travel Insurance',
+      'Anything not mentioned in inclusions'
+    ],
+    hotels: [
+      { category: 'Standard', options: ['Comfortable 2-Star / Budget Stays'] },
+      { category: 'Deluxe', options: ['Highly Rated 3-Star Hotels'] },
+      { category: 'Premium', options: ['Luxury 4-Star / Boutique Stays'] }
+    ],
+    vehicle: ['Sedan', 'Ertiga', 'Innova', 'Tempo Traveller'],
+    bestTimeToVisit: 'October to March',
+    perfectFor: ['Families', 'Couples', 'Senior Citizens', 'Weekend Spiritual Trips', 'Ram Bhakts'],
+    whyBookWithUs: [
+      'Experienced Local Team',
+      'Verified Hotels',
+      'Private Transport',
+      'Transparent Pricing',
+      '24×7 Assistance',
+      'Custom Itineraries',
+      'Secure Booking',
+      'Trusted Pilgrimage Experts'
+    ],
+    faq: [
+      {
+        question: 'What is the best time to visit Ayodhya?',
+        answer: 'The best time to visit Ayodhya is between October and March when the weather is pleasant and comfortable for temple sightseeing.'
+      },
+      {
+        question: 'Is a 1 Night / 2 Days tour enough for Ayodhya?',
+        answer: 'Yes, a 1 Night / 2 Days tour is sufficient to cover all the main temples, including Shri Ram Janmabhoomi Mandir, Hanuman Garhi, Kanak Bhawan, and the evening Saryu River Aarti.'
+      },
+      {
+        question: 'What hotel options are available in Ayodhya?',
+        answer: 'We offer standard (budget 2-star), deluxe (highly rated 3-star), and premium (luxury 4-star / heritage boutique) hotel options in Ayodhya close to the temples.'
+      },
+      {
+        question: 'Where do you arrange pickup and drop-off from?',
+        answer: 'We arrange pickup and drop-off from Ayodhya Airport, Ayodhya Railway Station, or nearby airports like Lucknow (LKO) depending on your travel choice.'
+      },
+      {
+        question: 'Can this package be customized?',
+        answer: 'Yes, all our packages are 100% customizable. You can extend your stay, add more local sites, or upgrade hotels by consulting with our tour coordinator.'
+      },
+      {
+        question: 'Do you offer custom services for group bookings?',
+        answer: 'Yes, we specialize in group pilgrimages for extended families, senior citizen clubs, and corporate groups. We provide larger luxury coaches and dedicated tour guides.'
+      },
+      {
+        question: 'Is this tour suitable for senior citizens?',
+        answer: 'Absolutely. The tour is designed to be senior-friendly with comfortable AC transits, nearby hotel stays, and e-rickshaw coordinates to avoid long walks.'
+      },
+      {
+        question: 'What is your cancellation policy?',
+        answer: 'Cancellations made 15 days or more before the travel date receive a full refund (minus minimal handling fees). For exact details, please refer to our terms or discuss with our coordinator.'
+      }
+    ],
+    rating: 4.9,
+    reviewsCount: 96,
+    image: '/images/gallery/ayodhya_ram_mandir_day.webp',
+    itinerary: [
+      {
+        day: 1,
+        title: 'Ayodhya Arrival & Temple Darshan',
+        description: 'Arrival in Ayodhya. Meet our representative and transfer to hotel for check-in. Freshen up. Visit the sacred Shri Ram Janmabhoomi Mandir for darshan. Next, visit Hanuman Garhi and Kanak Bhawan, and the historic Dashrath Mahal. In the evening, witness the divine Saryu River evening Aarti at Ram Ki Paidi. Return to hotel for overnight stay in Ayodhya.'
+      },
+      {
+        day: 2,
+        title: 'Spiritual Sightseeing & Departure',
+        description: 'Enjoy breakfast at your hotel. Check out and proceed to visit Nageshwarnath Temple and Guptar Ghat on the banks of Saryu River. Spend some optional time for local shopping. Transfer to Ayodhya Airport, Railway Station, or Lucknow Transit point for your departure journey. Tour ends with holy memories of Ayodhya Dham.'
+      }
+    ]
   }
 ];

@@ -228,6 +228,16 @@ export const PackageDetailPageClient: React.FC<PackageDetailPageClientProps> = (
         { id: "mo-5", url: "/images/gallery/ujjain_kal_bhairav.webp", title: "Kaal Bhairav Temple", category: "Ujjain" }
       ];
     }
+    if (pkgId === "ayodhya-darshan-tour-package") {
+      return [
+        { id: "ad-1", url: "/images/gallery/ayodhya_ram_mandir_day.webp", title: "Shri Ram Janmabhoomi Mandir", category: "Ayodhya" },
+        { id: "ad-2", url: "/images/gallery/ayodhya_saryu_aarti.webp", title: "Holy Saryu River Aarti", category: "Ayodhya" },
+        { id: "ad-3", url: "/images/gallery/ayodhya_hanuman_garhi.webp", title: "Hanuman Garhi Temple", category: "Ayodhya" },
+        { id: "ad-4", url: "/images/gallery/ayodhya_kanak_bhawan.webp", title: "Kanak Bhawan Temple", category: "Ayodhya" },
+        { id: "ad-5", url: "/images/gallery/ayodhya_ram_ki_paidi.webp", title: "Ram Ki Paidi Ghats", category: "Ayodhya" },
+        { id: "ad-6", url: "/images/gallery/ayodhya_ram_mandir_night.webp", title: "Shri Ram Mandir (Night View)", category: "Ayodhya" }
+      ];
+    }
     return [
       { id: "g-1", url: "/images/gallery/varanasi_kashi_vishwanath.webp", title: "Kashi Vishwanath Temple", category: "Varanasi" },
       { id: "g-2", url: "/images/gallery/varanasi_ganga_aarti.webp", title: "Ganga Aarti", category: "Varanasi" },

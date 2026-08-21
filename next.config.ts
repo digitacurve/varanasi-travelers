@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
       { source: "/divine-trails-uttar-pradesh-tour-package", destination: "/packages/divine-trails-uttar-pradesh", permanent: true },
       { source: "/mahakal-darshan-tour-package", destination: "/packages/mahakal-darshan", permanent: true },
       { source: "/mahakal-omkareshwar-tour-package", destination: "/packages/mahakal-omkareshwar", permanent: true },
+      { source: "/ayodhya-darshan-tour-package", destination: "/packages/ayodhya-darshan", permanent: true },
     ];
   },
 };
