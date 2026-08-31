@@ -179,7 +179,7 @@ export const faqs: FAQItem[] = [
   {
     id: 'faq-5',
     question: 'Is your travel agency GST registered?',
-    answer: 'Yes, we are a fully government-approved and GST-registered travel agency. We provide official tax invoices for all tour bookings, which is highly beneficial for corporate LTC claims and tax compliance.',
+    answer: 'Yes, Varanasi Travelers is an official unit of Baba Vishwanath Traders (GSTIN: 09CVOPS2321B3ZK), a fully government-approved and GST-registered firm. We provide official GST tax invoices for all tour bookings, which is valid for corporate LTC claims and tax compliance.',
   },
 ];
 

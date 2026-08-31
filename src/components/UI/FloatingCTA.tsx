@@ -109,29 +109,29 @@ export const FloatingCTA: React.FC<FloatingCTAProps> = ({
         )}
       </AnimatePresence>
 
-      {/* Mobile Sticky Bottom Bar (Always visible on mobile/tablet) */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#FFFDF9]/95 backdrop-blur-md border-t border-orange-100/50 shadow-[0_-4px_20px_rgba(15,23,42,0.05)] px-4 py-3 flex gap-2">
+      {/* Mobile Sticky Bottom Bar (Sleek, slim & compact) */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/90 backdrop-blur-lg border-t border-slate-200/60 shadow-[0_-2px_12px_rgba(15,23,42,0.06)] px-2.5 py-1.5 flex gap-1.5 items-center">
         <button
           onClick={handleCall}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-slate-900 text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
+          className="flex-1 flex items-center justify-center gap-1 bg-slate-900 text-white py-2 px-1 rounded-lg font-display font-bold text-[11px] shadow-sm active:scale-[0.97] transition-transform"
         >
-          <Phone size={14} />
+          <Phone size={12} className="shrink-0" />
           <span>Call Now</span>
         </button>
         
         <button
           onClick={handleWhatsApp}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#25D366] text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
+          className="flex-1 flex items-center justify-center gap-1 bg-[#25D366] text-white py-2 px-1 rounded-lg font-display font-bold text-[11px] shadow-sm active:scale-[0.97] transition-transform"
         >
-          <MessageCircle size={14} className="fill-white" />
+          <MessageCircle size={12} className="fill-white shrink-0" />
           <span>WhatsApp</span>
         </button>
 
         <button
           onClick={handleScrollToForm}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-accent-orange text-white py-3 rounded-xl font-display font-bold text-xs shadow-md active:scale-[0.98] transition-transform"
+          className="flex-1 flex items-center justify-center gap-1 bg-gradient-to-r from-amber-500 to-accent-orange text-white py-2 px-1 rounded-lg font-display font-bold text-[11px] shadow-sm active:scale-[0.97] transition-transform"
         >
-          <Calendar size={14} />
+          <Calendar size={12} className="shrink-0" />
           <span>Get Quote</span>
         </button>
       </div>

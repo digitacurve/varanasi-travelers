@@ -6,7 +6,8 @@ import Link from "next/link";
 import { 
   Clock, MapPin, Check, X, Building2, Car, Compass, 
   HelpCircle, Sparkles, ChevronRight, CheckCircle2,
-  CalendarRange, Phone, MessageSquare, Headphones, Coffee, ArrowRight, Star
+  CalendarRange, Phone, MessageSquare, Headphones, Coffee, ArrowRight, Star,
+  ShieldCheck
 } from "lucide-react";
 import { Form } from "@/components/UI/Form";
 import { FloatingCTA } from "@/components/UI/FloatingCTA";
@@ -713,6 +714,11 @@ export const PackageDetailPageClient: React.FC<PackageDetailPageClientProps> = (
                     <span>Vehicle Option</span>
                     <span className="text-white font-extrabold">{pkg.vehicle.join(" / ")}</span>
                   </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2 text-[11px] text-slate-400">
+                  <ShieldCheck size={14} className="text-accent-orange shrink-0" />
+                  <span>GST Invoicing: <strong className="text-slate-300">Baba Vishwanath Traders</strong></span>
                 </div>
               </div>
 

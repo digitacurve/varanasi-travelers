@@ -433,7 +433,7 @@ export default function Home() {
                           </div>
                           <div>
                             <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">GST Registered Agency</h4>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">100% transparent invoicing with zero hidden charges.</p>
+                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">Official tax invoicing under Baba Vishwanath Traders (09CVOPS2321B3ZK).</p>
                           </div>
                         </div>
 

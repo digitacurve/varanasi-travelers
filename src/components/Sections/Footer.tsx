@@ -34,6 +34,9 @@ export const Footer: React.FC = () => {
                 />
               </div>
             </div>
+            <p className="text-[11px] font-medium text-slate-400 -mt-1">
+              A unit of <span className="text-slate-200 font-semibold">Baba Vishwanath Traders</span>
+            </p>
             <p className="text-xs leading-relaxed text-slate-500">
               India's premier spiritual travel agency. We are committed to organizing safe, dignified, and comfortable temple tours across Varanasi, Ayodhya, and Prayagraj for families.
             </p>
@@ -148,9 +151,12 @@ export const Footer: React.FC = () => {
                   </a>
                 </div>
               </li>
-              <li className="flex gap-2 items-center text-slate-400">
-                <ShieldCheck size={14} className="text-accent-orange shrink-0" />
-                <span>GSTIN: 09CVOPS2321B3ZK</span>
+              <li className="flex gap-2 items-start text-slate-400">
+                <ShieldCheck size={14} className="text-accent-orange shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-slate-200 font-medium block">Baba Vishwanath Traders</span>
+                  <span className="text-slate-400">GSTIN: 09CVOPS2321B3ZK</span>
+                </div>
               </li>
             </ul>
           </div>
@@ -161,7 +167,7 @@ export const Footer: React.FC = () => {
         <div className="pt-8 border-t border-slate-800 text-xs text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
             <span>
-              © {new Date().getFullYear()} Divine Pilgrimages. All rights reserved.
+              © {new Date().getFullYear()} Varanasi Travelers (A unit of Baba Vishwanath Traders). All rights reserved.
             </span>
           </div>
 

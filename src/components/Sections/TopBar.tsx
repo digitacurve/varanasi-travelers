@@ -11,7 +11,7 @@ export const TopBar: React.FC = () => {
         <div className="flex items-center gap-5">
           <span className="flex items-center gap-1.5 text-accent-orange font-semibold">
             <ShieldCheck size={14} className="stroke-[2.5]" />
-            <span>Govt Approved & GST Registered Agency</span>
+            <span>Govt Approved & GST Registered • Baba Vishwanath Traders</span>
           </span>
           <span className="flex items-center gap-1.5 text-slate-400">
             <Clock size={14} />

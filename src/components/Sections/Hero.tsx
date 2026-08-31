@@ -312,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
               <Shield className="text-accent-orange shrink-0" size={22} />
               <div>
                 <h5 className="text-xs font-bold text-white uppercase tracking-wider">GST Registered</h5>
-                <p className="text-[10px] text-slate-400">100% Secure Billing</p>
+                <p className="text-[10px] text-slate-400">Baba Vishwanath Traders</p>
               </div>
             </div>
             <div className="flex flex-col items-center text-center space-y-2">
