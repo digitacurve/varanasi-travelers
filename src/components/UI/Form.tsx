@@ -207,6 +207,24 @@ export const Form: React.FC<FormProps> = ({
     if (typeof window !== "undefined") {
       (window as any).dataLayer = (window as any).dataLayer || [];
       
+      // Google Ads Enhanced Conversions: set user_data prior to conversion event
+      const userData: Record<string, string> = {};
+      if ((formData as any).email && typeof (formData as any).email === "string" && (formData as any).email.trim()) {
+        userData.email = (formData as any).email.trim();
+      }
+      if (formData.phone && typeof formData.phone === "string" && formData.phone.trim()) {
+        userData.phone_number = formData.phone.trim();
+      }
+
+      if (Object.keys(userData).length > 0) {
+        if (typeof (window as any).gtag !== "function") {
+          (window as any).gtag = function () {
+            ((window as any).dataLayer = (window as any).dataLayer || []).push(arguments);
+          };
+        }
+        (window as any).gtag("set", "user_data", userData);
+      }
+
       // Form Submitted event
       (window as any).dataLayer.push({
         event: "Form Submitted",
