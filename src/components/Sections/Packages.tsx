@@ -53,13 +53,13 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
   };
 
   return (
-    <section id="packages" className={`${noPadding ? "py-12 md:py-16" : "py-20 md:py-28"} ${noPadding ? "" : "bg-gradient-to-b from-white via-orange-50/10 to-white"} relative overflow-hidden`}>
+    <section id="packages" className={`${noPadding ? "py-12 md:py-16" : "py-20 md:py-28"} bg-transparent relative overflow-hidden`}>
       
       {/* Background Saffron/Amber glow blur */}
       {mounted && (
         <>
-          <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full filter blur-[120px] pointer-events-none z-0" />
-          <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent-orange/5 rounded-full filter blur-[120px] pointer-events-none z-0" />
+          <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-amber-500/10 rounded-full filter blur-[120px] pointer-events-none z-0" />
+          <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-accent-orange/10 rounded-full filter blur-[120px] pointer-events-none z-0" />
         </>
       )}
 
@@ -67,13 +67,13 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
         
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 md:mb-12">
-          <span className="text-xs uppercase font-extrabold text-accent-orange bg-orange-50 border border-orange-100/50 px-4 py-1.5 rounded-full inline-block mb-3.5 tracking-wider select-none shadow-sm">
+          <span className="text-xs uppercase font-extrabold text-amber-400 bg-amber-500/10 backdrop-blur-xl border border-amber-400/30 px-4 py-1.5 rounded-full inline-block mb-3.5 tracking-wider select-none shadow-[0_0_12px_rgba(245,158,11,0.2)]">
             ✨ SACRED EXPERIENCES
           </span>
-          <h2 className="text-3xl md:text-5xl font-display font-black text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl font-display font-black text-white tracking-tight leading-tight">
             Explore Our Most Popular Spiritual Tour Packages
           </h2>
-          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-sm md:text-base text-slate-300 mt-4 leading-relaxed max-w-3xl mx-auto">
             Choose from carefully designed pilgrimage tours covering India's holiest destinations with hotels, private transport, sightseeing, and expert assistance.
           </p>
         </div>
@@ -86,9 +86,14 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
               onClick={() => handleCategoryChange(cat)}
               className={`px-5 py-2 rounded-full font-display text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-dark-slate text-white shadow-md shadow-slate-900/10"
-                  : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-dark-slate"
+                  ? "bg-gradient-to-r from-amber-500 to-orange-600 text-white border border-amber-300/40 shadow-[0_0_15px_rgba(245,158,11,0.4)]"
+                  : "bg-white/[0.07] backdrop-blur-2xl text-slate-300 border border-white/15 hover:bg-white/[0.12] hover:text-white"
               }`}
+              style={{
+                boxShadow: activeCategory === cat 
+                  ? "0 4px 14px -2px rgba(234, 88, 12, 0.4), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3)"
+                  : "0 4px 16px rgba(0,0,0,0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)"
+              }}
             >
               {cat}
             </button>

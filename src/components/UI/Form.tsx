@@ -309,7 +309,12 @@ export const Form: React.FC<FormProps> = ({
       `}} />
 
       <div className="relative w-full flex justify-center z-10 group form-glow-wrapper">
-        <div className={`bg-[#FFFDF9] border border-orange-200/80 p-6 md:p-8 rounded-[2.5rem] w-full relative shadow-[0_24px_50px_-10px_rgba(249,115,22,0.08),0_0_20px_rgba(249,115,22,0.12)] focus-within:border-accent-orange focus-within:shadow-[0_24px_50px_-10px_rgba(249,115,22,0.14),0_0_30px_rgba(249,115,22,0.22)] transition-all duration-500 ${compact ? "max-w-md" : "max-w-xl"} overflow-hidden text-slate-800`}>
+        <div 
+          className={`bg-white/90 backdrop-blur-3xl border border-white/95 p-6 md:p-8 rounded-[2.5rem] w-full relative focus-within:border-accent-orange transition-all duration-500 ${compact ? "max-w-md" : "max-w-xl"} overflow-hidden text-slate-800`}
+          style={{
+            boxShadow: "0 24px 60px -10px rgba(234, 88, 12, 0.12), 0 8px 24px -4px rgba(15, 23, 42, 0.04), inset 0 2px 2px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.6)"
+          }}
+        >
           
           {/* Top gold header element inside the card */}
           <div className="absolute top-0 inset-x-0 h-[4px] bg-gradient-to-r from-amber-400 via-accent-orange to-orange-500" />
@@ -317,7 +322,7 @@ export const Form: React.FC<FormProps> = ({
           {/* Luxury Booking Header inside the card */}
           <div className="mb-6 pb-4 border-b border-orange-100/60 flex items-center justify-between">
             <div>
-              <span className="text-[10px] uppercase font-extrabold text-accent-orange bg-orange-50 border border-orange-100/60 px-3 py-1 rounded-full inline-block tracking-widest">
+              <span className="text-[10px] uppercase font-extrabold text-accent-orange bg-orange-50/90 border border-orange-200/60 px-3 py-1 rounded-full inline-block tracking-widest shadow-xs">
                 Divine Booking Engine
               </span>
               <h3 className="text-lg font-display font-extrabold text-slate-900 mt-2.5">
@@ -333,7 +338,7 @@ export const Form: React.FC<FormProps> = ({
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
             <input type="hidden" name="meta_packageName" value={metaData.packageName} />
             <input type="hidden" name="meta_packageUrl" value={metaData.packageUrl} />
             <input type="hidden" name="meta_utmSource" value={metaData.utmSource} />
@@ -345,9 +350,14 @@ export const Form: React.FC<FormProps> = ({
             <input type="hidden" name="meta_deviceType" value={metaData.deviceType} />
             {/* Full Name Booking Tile */}
             <div className="space-y-1 w-full text-left">
-              <div className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-[#FCF9F5] border-amber-900/10 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] ${
-                errors.fullName ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
-              }`}>
+              <div 
+                className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-md border-orange-200/60 focus-within:bg-white focus-within:border-accent-orange ${
+                  errors.fullName ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
+                }`}
+                style={{
+                  boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                }}
+              >
                 <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                   <User size={12} className="text-accent-orange" />
                   Full Name
@@ -368,9 +378,14 @@ export const Form: React.FC<FormProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Phone Booking Tile */}
               <div className="space-y-1 w-full text-left">
-                <div className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-[#FCF9F5] border-amber-900/10 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] ${
-                  errors.phone ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
-                }`}>
+                <div 
+                  className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-md border-orange-200/60 focus-within:bg-white focus-within:border-accent-orange ${
+                    errors.phone ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
+                  }`}
+                  style={{
+                    boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                  }}
+                >
                   <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                     <Phone size={12} className="text-accent-orange" />
                     Mobile Number
@@ -389,9 +404,14 @@ export const Form: React.FC<FormProps> = ({
 
               {/* Travel Date Booking Tile */}
               <div className="space-y-1 w-full text-left">
-                <div className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-[#FCF9F5] border-amber-900/10 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] ${
-                  errors.travelDate ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
-                }`}>
+                <div 
+                  className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-md border-orange-200/60 focus-within:bg-white focus-within:border-accent-orange ${
+                    errors.travelDate ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
+                  }`}
+                  style={{
+                    boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                  }}
+                >
                   <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                     <Calendar size={12} className="text-accent-orange" />
                     Date of Travel
@@ -413,9 +433,14 @@ export const Form: React.FC<FormProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Travellers Booking Tile */}
               <div className="space-y-1 w-full text-left">
-                <div className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-[#FCF9F5] border-amber-900/10 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] ${
-                  errors.travellers ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
-                }`}>
+                <div 
+                  className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-md border-orange-200/60 focus-within:bg-white focus-within:border-accent-orange ${
+                    errors.travellers ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
+                  }`}
+                  style={{
+                    boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                  }}
+                >
                   <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                     <Users size={12} className="text-accent-orange" />
                     No. of Travellers
@@ -435,9 +460,14 @@ export const Form: React.FC<FormProps> = ({
 
               {/* Package Selection Booking Tile */}
               <div className="space-y-1 w-full text-left">
-                <div className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-[#FCF9F5] border-amber-900/10 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] ${
-                  errors.packageId ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
-                }`}>
+                <div 
+                  className={`relative flex flex-col px-4 py-2.5 rounded-2xl border transition-all duration-300 bg-white/80 backdrop-blur-md border-orange-200/60 focus-within:bg-white focus-within:border-accent-orange ${
+                    errors.packageId ? "border-red-300 focus-within:border-red-500 focus-within:ring-red-100/30" : "focus-within:ring-4 focus-within:ring-accent-orange/5"
+                  }`}
+                  style={{
+                    boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                  }}
+                >
                   <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                     <Briefcase size={12} className="text-accent-orange" />
                     Select Tour Package
@@ -470,7 +500,12 @@ export const Form: React.FC<FormProps> = ({
 
             {/* Special Requirements Booking Tile */}
             <div className="space-y-1 text-left">
-              <div className="relative flex flex-col px-4 py-2.5 rounded-2xl border border-amber-900/10 bg-[#FCF9F5] transition-all duration-300 focus-within:bg-white focus-within:border-accent-orange focus-within:shadow-[0_8px_30px_rgba(249,115,22,0.05)] focus-within:ring-4 focus-within:ring-accent-orange/5">
+              <div 
+                className="relative flex flex-col px-4 py-2.5 rounded-2xl border border-orange-200/60 bg-white/80 backdrop-blur-md transition-all duration-300 focus-within:bg-white focus-within:border-accent-orange focus-within:ring-4 focus-within:ring-accent-orange/5"
+                style={{
+                  boxShadow: "inset 0 1px 1.5px 0 rgba(255, 255, 255, 1), 0 2px 8px rgba(15, 23, 42, 0.02)"
+                }}
+              >
                 <label className="text-[10px] uppercase font-extrabold tracking-widest text-[#1F2937] flex items-center gap-1.5 mb-1 select-none">
                   <MessageSquare size={12} className="text-accent-orange" />
                   Special Requirements (Optional)

@@ -49,7 +49,12 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewD
   };
 
   return (
-    <div className="group bg-[#FFFDF9] rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-orange-100/50 shadow-[0_8px_30px_rgba(249,115,22,0.02)] hover:shadow-[0_24px_50px_rgba(249,115,22,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col h-full relative">
+    <div 
+      className="group bg-white/88 backdrop-blur-2xl rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-white/90 hover:border-orange-300/80 transition-all duration-300 flex flex-col h-full relative"
+      style={{
+        boxShadow: "0 16px 40px -8px rgba(234, 88, 12, 0.08), 0 4px 16px -2px rgba(15, 23, 42, 0.03), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4)"
+      }}
+    >
       {/* Image Container with Hover Zoom */}
       <div className="relative h-44 sm:h-52 md:h-60 w-full overflow-hidden bg-orange-50">
         <Image
@@ -64,14 +69,14 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewD
 
         {/* Floating Custom Badge */}
         {pkg.tag && (
-          <span className={`absolute top-3 left-3 md:top-5 md:left-5 bg-gradient-to-r ${tagStyles[pkg.tag] || "from-amber-500 to-orange-500"} text-white text-[9px] md:text-xs font-extrabold px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg md:rounded-xl shadow-lg flex items-center gap-1.5 select-none tracking-wider uppercase`}>
+          <span className={`absolute top-3 left-3 md:top-5 md:left-5 bg-gradient-to-r ${tagStyles[pkg.tag] || "from-amber-500 to-orange-500"} text-white text-[9px] md:text-xs font-extrabold px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg md:rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] border border-white/20 flex items-center gap-1.5 select-none tracking-wider uppercase`}>
             <span>{tagEmoji[pkg.tag]}</span>
             <span>{pkg.tag}</span>
           </span>
         )}
 
         {/* Floating Duration Indicator */}
-        <div className="absolute bottom-3 right-3 md:bottom-5 md:right-5 bg-black/60 backdrop-blur-md px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-lg md:rounded-xl text-white text-[11px] md:text-xs font-semibold flex items-center gap-1.5 select-none shadow-sm">
+        <div className="absolute bottom-3 right-3 md:bottom-5 md:right-5 bg-slate-950/70 backdrop-blur-md px-2.5 py-1 md:px-3.5 md:py-1.5 rounded-lg md:rounded-xl text-white text-[11px] md:text-xs font-semibold flex items-center gap-1.5 select-none shadow-md border border-white/10">
           <Clock size={12} className="text-amber-400" />
           <span>{pkg.duration}</span>
         </div>
@@ -85,7 +90,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewD
           {pkg.destinations.map((dest, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-1 text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 bg-orange-50 border border-orange-100/50 px-2 py-0.5 md:px-2.5 rounded-md"
+              className="inline-flex items-center gap-1 text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-700 bg-orange-50/90 border border-orange-200/60 px-2 py-0.5 md:px-2.5 rounded-md shadow-2xs"
             >
               <MapPin size={9} className="text-accent-orange" />
               {dest}
@@ -104,7 +109,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewD
         </p>
 
         {/* Four Quick Service Icons */}
-        <div className="grid grid-cols-2 gap-2 md:gap-3 mb-3.5 md:mb-5 border-y border-orange-100/30 py-2.5 md:py-3.5 bg-orange-50/20 rounded-xl md:rounded-2xl px-3 md:px-4 select-none">
+        <div className="grid grid-cols-2 gap-2 md:gap-3 mb-3.5 md:mb-5 border border-orange-200/50 py-2.5 md:py-3.5 bg-orange-50/40 backdrop-blur-sm rounded-xl md:rounded-2xl px-3 md:px-4 select-none shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
           <div className="flex items-center gap-1.5 md:gap-2 text-[11px] md:text-xs font-bold text-slate-700">
             <Car size={13} className="text-accent-orange shrink-0" />
             <span className="truncate">AC Transfer</span>
@@ -125,13 +130,13 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg, onSelect, onViewD
 
         {/* Lock Price Box */}
         {!pkg.isComingSoon && pkg.lockPrice && (
-          <div className="border border-dashed border-orange-300 bg-orange-50/50 px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl text-center text-[9px] font-black text-slate-800 tracking-wide mb-3.5 md:mb-5 flex items-center justify-center gap-1.5 select-none">
+          <div className="border border-dashed border-amber-400/80 bg-gradient-to-r from-amber-50/80 to-orange-50/80 backdrop-blur-sm px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl text-center text-[9px] font-black text-slate-800 tracking-wide mb-3.5 md:mb-5 flex items-center justify-center gap-1.5 select-none shadow-2xs">
             <span>🔒</span>
             <span>LOCK PRICE FOR ₹{pkg.lockPrice}</span>
           </div>
         )}
         {pkg.isComingSoon && (
-          <div className="border border-dashed border-slate-200 bg-slate-50 px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl text-center text-[9px] font-black text-slate-400 tracking-wide mb-3.5 md:mb-5 flex items-center justify-center gap-1.5 select-none">
+          <div className="border border-dashed border-slate-200 bg-slate-50/90 px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl text-center text-[9px] font-black text-slate-400 tracking-wide mb-3.5 md:mb-5 flex items-center justify-center gap-1.5 select-none">
             <span>📅</span>
             <span>LAUNCH RATES RELEASING SOON</span>
           </div>

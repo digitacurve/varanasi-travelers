@@ -141,7 +141,7 @@ export default function Home() {
           />
 
           {/* Continuous ambient background container starting from Enquiry Form to FAQ */}
-          <div ref={containerRef} className="relative overflow-hidden bg-gradient-to-b from-[#FFFDF9] via-[#FFF7EE] to-[#FFF4E6] w-full border-t border-orange-100/40">
+          <div ref={containerRef} className="relative overflow-hidden bg-gradient-to-b from-[#080B11] via-[#0D111A] to-[#080B11] w-full border-t border-white/10 text-white">
             {/* Style Injector for large neon saffron ambient glow layers */}
             <style dangerouslySetInnerHTML={{__html: `
               @keyframes auraBreathA {
@@ -396,19 +396,19 @@ export default function Home() {
                     <div className="col-span-1 lg:col-span-7 row-start-3 lg:row-start-1 space-y-4 md:space-y-8 text-left relative z-10">
                       {/* Subtle Saffron Badge */}
                       <div>
-                        <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 border border-orange-100 px-3.5 py-1.5 rounded-full inline-block tracking-wider shadow-sm">
+                        <span className="text-xs uppercase font-bold text-amber-300 bg-white/8 backdrop-blur-xl border border-white/20 px-4 py-1.5 rounded-full inline-block tracking-widest shadow-xs">
                           Instant Custom Quote
                         </span>
                       </div>
 
                       {/* Section Heading & Subtitle */}
                       <div className="space-y-2 md:space-y-4">
-                        <h2 className="text-2xl md:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
-                          Plan Your <span className="text-accent-orange">Spiritual Journey</span>
+                        <h2 className="text-2xl md:text-4xl font-display font-extrabold text-white tracking-tight leading-tight">
+                          Plan Your <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-orange-300 bg-clip-text text-transparent">Spiritual Journey</span>
                         </h2>
                         {/* Subtle gold line accent */}
-                        <div className="h-1 w-20 bg-gradient-to-r from-accent-orange to-amber-500 rounded-full" />
-                        <p className="text-xs sm:text-base text-slate-600 max-w-xl leading-relaxed">
+                        <div className="h-1 w-20 bg-gradient-to-r from-orange-500 via-amber-400 to-yellow-300 rounded-full" />
+                        <p className="text-xs sm:text-base text-slate-300 max-w-xl leading-relaxed">
                           Share your travel preferences and receive a custom-tailored package estimate. Our local pilgrimage experts will design the perfect itinerary with handpicked hotels, private transport, and seamless VIP Darshan.
                         </p>
                       </div>
@@ -416,46 +416,66 @@ export default function Home() {
                       {/* Trust Indicators Grid - 2x2 on Mobile, 2-column on Desktop */}
                       <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-4">
                         {/* Google Rating */}
-                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                        <div 
+                          className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-white/[0.07] backdrop-blur-2xl p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-white/15 transition-all duration-300 hover:bg-white/[0.12] hover:border-white/30 cursor-default"
+                          style={{
+                            boxShadow: "0 16px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2)"
+                          }}
+                        >
+                          <div className="bg-gradient-to-br from-amber-400 via-orange-600 to-amber-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_16px_rgba(249,115,22,0.4)] flex items-center justify-center border border-white/25">
                             <Star className="fill-white stroke-white w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">4.9/5 Google Rated</h4>
-                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Highly recommended for family and senior citizen care.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-white uppercase tracking-wide leading-tight">4.9/5 Google Rated</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1 leading-tight sm:leading-relaxed">Highly recommended for family and senior citizen care.</p>
                           </div>
                         </div>
 
                         {/* GST Registered */}
-                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                        <div 
+                          className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-white/[0.07] backdrop-blur-2xl p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-white/15 transition-all duration-300 hover:bg-white/[0.12] hover:border-white/30 cursor-default"
+                          style={{
+                            boxShadow: "0 16px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2)"
+                          }}
+                        >
+                          <div className="bg-gradient-to-br from-amber-400 via-orange-600 to-amber-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_16px_rgba(249,115,22,0.4)] flex items-center justify-center border border-white/25">
                             <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">GST Registered Agency</h4>
-                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Official tax invoicing under Baba Vishwanath Traders (09CVOPS2321B3ZK).</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-white uppercase tracking-wide leading-tight">GST Registered Agency</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1 leading-tight sm:leading-relaxed">Official tax invoicing under Baba Vishwanath Traders (09CVOPS2321B3ZK).</p>
                           </div>
                         </div>
 
                         {/* Happy Travellers */}
-                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                        <div 
+                          className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-white/[0.07] backdrop-blur-2xl p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-white/15 transition-all duration-300 hover:bg-white/[0.12] hover:border-white/30 cursor-default"
+                          style={{
+                            boxShadow: "0 16px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2)"
+                          }}
+                        >
+                          <div className="bg-gradient-to-br from-amber-400 via-orange-600 to-amber-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_16px_rgba(249,115,22,0.4)] flex items-center justify-center border border-white/25">
                             <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">12,000+ Happy Pilgrims</h4>
-                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Memorable spiritual journeys designed for families.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-white uppercase tracking-wide leading-tight">12,000+ Happy Pilgrims</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1 leading-tight sm:leading-relaxed">Memorable spiritual journeys designed for families.</p>
                           </div>
                         </div>
 
                         {/* 24x7 Assistance */}
-                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                        <div 
+                          className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-white/[0.07] backdrop-blur-2xl p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-white/15 transition-all duration-300 hover:bg-white/[0.12] hover:border-white/30 cursor-default"
+                          style={{
+                            boxShadow: "0 16px 36px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2)"
+                          }}
+                        >
+                          <div className="bg-gradient-to-br from-amber-400 via-orange-600 to-amber-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_16px_rgba(249,115,22,0.4)] flex items-center justify-center border border-white/25">
                             <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">24/7 On-Trip Support</h4>
-                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">On-ground assistance for rituals, darshans & queries.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-white uppercase tracking-wide leading-tight">24/7 On-Trip Support</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-300 mt-1 leading-tight sm:leading-relaxed">On-ground assistance for rituals, darshans & queries.</p>
                           </div>
                         </div>
                       </div>

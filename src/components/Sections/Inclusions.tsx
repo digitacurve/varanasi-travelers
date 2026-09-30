@@ -85,13 +85,13 @@ export const Inclusions: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-14">
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange bg-orange-50 px-3 py-1 rounded-full inline-block mb-2.5 tracking-widest border border-orange-100/60 shadow-sm">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-amber-300 bg-white/8 backdrop-blur-xl border border-white/20 px-4 py-1.5 rounded-full inline-block mb-2.5 tracking-widest shadow-xs">
             Standard vs Premium
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">
             Pilgrimage Service Inclusions
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-slate-500 mt-2 md:mt-3 leading-relaxed max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 mt-2 md:mt-3 leading-relaxed max-w-xl mx-auto">
             We provide everything required for a comfortable, stress-free holy darshan. Compare our standard and luxury inclusions below.
           </p>
 
@@ -101,8 +101,8 @@ export const Inclusions: React.FC = () => {
               onClick={() => scrollToCard("a")}
               className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
                 activePlan === "a"
-                  ? "bg-accent-orange text-white shadow-md shadow-orange-500/20"
-                  : "bg-white text-slate-600 border border-slate-200"
+                  ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-md shadow-orange-500/20"
+                  : "bg-white/10 text-slate-300 border border-white/15"
               }`}
             >
               Plan A: Standard
@@ -111,8 +111,8 @@ export const Inclusions: React.FC = () => {
               onClick={() => scrollToCard("b")}
               className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
                 activePlan === "b"
-                  ? "bg-slate-900 text-amber-400 shadow-md shadow-slate-900/30"
-                  : "bg-white text-slate-600 border border-slate-200"
+                  ? "bg-white/20 text-amber-300 border border-amber-400/40 shadow-md shadow-amber-500/20"
+                  : "bg-white/10 text-slate-300 border border-white/15"
               }`}
             >
               Plan B: Luxury ✨
@@ -127,19 +127,24 @@ export const Inclusions: React.FC = () => {
           className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar"
         >
           {/* Left Column: Standard Package Details */}
-          <div className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-orange-100/80 shadow-[0_4px_20px_rgba(15,23,42,0.03)] flex flex-col justify-between">
+          <div 
+            className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-white/[0.07] backdrop-blur-3xl p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/15 flex flex-col justify-between"
+            style={{
+              boxShadow: "0 24px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.25)"
+            }}
+          >
             <div>
-              <div className="mb-4 sm:mb-6 border-b border-orange-100/50 pb-3 sm:pb-4">
+              <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-xs uppercase font-extrabold text-accent-orange bg-orange-50 px-2.5 py-0.5 rounded-md tracking-wider">
+                  <span className="text-[10px] sm:text-xs uppercase font-extrabold text-orange-400 bg-orange-500/15 border border-orange-400/30 px-2.5 py-0.5 rounded-md tracking-wider">
                     Plan A
                   </span>
                   <span className="text-[10px] text-slate-400 font-semibold">Included in all packages</span>
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-dark-slate mt-1.5">
+                <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
                   Standard & Deluxe Inclusions
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-500 mt-1">
+                <p className="text-[11px] sm:text-xs text-slate-400 mt-1">
                   Ideal for families seeking comfortable, worry-free sacred travels.
                 </p>
               </div>
@@ -147,15 +152,15 @@ export const Inclusions: React.FC = () => {
               <div className="space-y-3 sm:space-y-4">
                 {inclusions.map((item, index) => (
                   <div key={index} className="flex gap-2.5 sm:gap-3.5 items-start">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-orange-50/80 text-accent-orange flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-white/10 border border-white/15 text-orange-400 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                       {item.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-xs sm:text-sm font-display font-bold text-dark-slate flex items-center gap-1.5">
+                      <h4 className="text-xs sm:text-sm font-display font-bold text-white flex items-center gap-1.5">
                         {item.title}
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       </h4>
-                      <p className="text-[10.5px] sm:text-xs text-slate-500 mt-0.5 leading-snug">
+                      <p className="text-[10.5px] sm:text-xs text-slate-300 mt-0.5 leading-snug">
                         {item.includedDesc}
                       </p>
                     </div>
@@ -164,29 +169,34 @@ export const Inclusions: React.FC = () => {
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 lg:hidden">
+            <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 lg:hidden">
               <span>Swipe for Plan B Luxury</span>
-              <span className="text-accent-orange font-bold flex items-center gap-0.5">Plan B <ChevronRight size={13} /></span>
+              <span className="text-orange-400 font-bold flex items-center gap-0.5">Plan B <ChevronRight size={13} /></span>
             </div>
           </div>
 
           {/* Right Column: Premium/Luxury Upgrades */}
-          <div className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-gradient-to-br from-slate-950 via-slate-900 to-[#12192e] text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-500/20 shadow-xl relative overflow-hidden flex flex-col justify-between">
+          <div 
+            className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-gradient-to-br from-amber-950/30 via-white/[0.08] to-black/60 backdrop-blur-3xl text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-400/40 relative overflow-hidden flex flex-col justify-between"
+            style={{
+              boxShadow: "0 24px 50px -10px rgba(245, 158, 11, 0.15), 0 12px 32px rgba(0,0,0,0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.3)"
+            }}
+          >
             {/* Background Orange Blur */}
-            <div className="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/10 rounded-full filter blur-[40px] pointer-events-none" />
+            <div className="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/20 rounded-full filter blur-[40px] pointer-events-none" />
 
             <div className="relative z-10">
               <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-xs uppercase font-extrabold text-amber-400 bg-amber-500/15 border border-amber-400/30 px-2.5 py-0.5 rounded-md tracking-wider flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-400" /> Plan B
+                  <span className="text-[10px] sm:text-xs uppercase font-extrabold text-amber-300 bg-amber-500/20 border border-amber-400/40 px-2.5 py-0.5 rounded-md tracking-wider flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-amber-300" /> Plan B
                   </span>
-                  <span className="text-[10px] text-amber-300/80 font-semibold">Premium Upgrade</span>
+                  <span className="text-[10px] text-amber-300/90 font-semibold">Premium Upgrade</span>
                 </div>
                 <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
                   Exclusive Heritage Luxury
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-1">
+                <p className="text-[11px] sm:text-xs text-slate-300 mt-1">
                   For travellers seeking ultimate VIP luxury, palaces, & bespoke rituals.
                 </p>
               </div>
@@ -194,13 +204,13 @@ export const Inclusions: React.FC = () => {
               <div className="space-y-3 sm:space-y-4">
                 {inclusions.map((item, index) => (
                   <div key={index} className="flex gap-2.5 sm:gap-3.5 items-start">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-white/10 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-amber-500/15 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
                       {item.icon}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-xs sm:text-sm font-display font-bold text-white flex items-center gap-1.5">
                         {item.title}
-                        <span className="text-[8.5px] uppercase bg-amber-400/20 text-amber-300 font-bold px-1.5 py-0.2 rounded">
+                        <span className="text-[8.5px] uppercase bg-amber-400/30 text-amber-200 font-bold px-1.5 py-0.2 rounded border border-amber-400/30">
                           VIP
                         </span>
                       </h4>

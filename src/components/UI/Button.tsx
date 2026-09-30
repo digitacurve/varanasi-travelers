@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = "button",
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center font-display font-semibold rounded-full transition-all duration-300 focus:outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed tracking-wide transform hover:-translate-y-0.5 active:scale-[0.98] active:translate-y-0";
+  const baseStyles = "inline-flex items-center justify-center font-display font-semibold rounded-full transition-all duration-300 focus:outline-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed tracking-wide select-none";
   
   const sizeStyles = {
     sm: "px-5 py-2 text-xs md:text-sm",
@@ -33,10 +33,10 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    solid: "bg-accent-orange text-white shadow-[0_4px_14px_rgba(255,122,0,0.3)] hover:bg-[#e06c00] hover:shadow-[0_6px_20px_rgba(255,122,0,0.4)]",
-    outline: "border-2 border-accent-orange text-accent-orange hover:bg-accent-orange hover:text-white shadow-sm",
+    solid: "bg-gradient-to-r from-[#FF7A00] via-[#EA580C] to-[#C2410C] text-white border border-white/25 shadow-[0_4px_16px_rgba(234,88,12,0.32),inset_0_1px_1px_rgba(255,255,255,0.4)] hover:shadow-[0_6px_22px_rgba(234,88,12,0.45)] hover:brightness-105",
+    outline: "border border-amber-600/40 text-amber-800 bg-orange-50/60 backdrop-blur-md shadow-[0_2px_8px_rgba(234,88,12,0.06),inset_0_1px_1px_rgba(255,255,255,0.8)] hover:bg-gradient-to-r hover:from-[#FF7A00] hover:to-[#EA580C] hover:text-white hover:border-transparent",
     text: "text-dark-slate hover:text-accent-orange",
-    white: "bg-white text-dark-slate shadow-[0_4px_14px_rgba(0,0,0,0.06)] hover:bg-slate-50 hover:shadow-[0_6px_20px_rgba(0,0,0,0.1)] border border-slate-100",
+    white: "bg-white/95 backdrop-blur-md text-slate-900 shadow-[0_4px_16px_rgba(15,23,42,0.06),inset_0_1px_1px_rgba(255,255,255,1)] hover:bg-white hover:shadow-[0_8px_24px_rgba(15,23,42,0.1)] border border-slate-200/80",
   };
 
   const widthStyle = fullWidth ? "w-full" : "";

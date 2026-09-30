@@ -47,6 +47,8 @@ export const metadata: Metadata = {
 };
 
 
+import { SmoothScroll } from "@/components/UI/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -55,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${inter.variable} h-full scroll-smooth antialiased`}
+      className={`${outfit.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         {/* Google Tag Manager */}
@@ -79,7 +81,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`
           }}
         />
         {/* End Google Tag Manager (noscript) */}
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

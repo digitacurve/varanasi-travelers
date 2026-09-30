@@ -24,21 +24,21 @@ export const FinalCTA: React.FC = () => {
   };
 
   return (
-    <section className="py-8 md:py-18 bg-dark-slate relative overflow-hidden">
+    <section className="py-10 md:py-20 bg-[#0B1120] relative overflow-hidden border-t border-amber-900/30">
       {/* Decorative background overlay */}
-      <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{
+      <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{
         backgroundImage: "url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=1920')"
       }} />
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-accent-orange/15 rounded-full filter blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-amber-600/15 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-orange-600/10 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 text-center text-white">
-        <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange tracking-widest block mb-2 md:mb-4">
+        <span className="text-[10px] sm:text-xs uppercase font-bold text-amber-400 tracking-widest block mb-2 md:mb-4 drop-shadow-xs">
           Bespoke Spiritual Experiences
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-extrabold tracking-tight leading-[1.15]">
           Need Help Planning Your <br />
-          <span className="text-accent-orange">Spiritual Journey?</span>
+          <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">Spiritual Journey?</span>
         </h2>
         <p className="text-xs sm:text-sm md:text-lg text-slate-300 max-w-2xl mx-auto mt-3 md:mt-6 leading-relaxed">
           Our destination planners will design a customized tour covering temple entries, local pujas, private transits, and comfortable hotel layouts suitable for elderly parents and families.
@@ -67,7 +67,7 @@ export const FinalCTA: React.FC = () => {
             variant="outline"
             size="lg"
             onClick={handleScrollToForm}
-            className="!border-white !text-white hover:!bg-white hover:!text-dark-slate"
+            className="!border-white/80 !text-white hover:!bg-white hover:!text-slate-900 shadow-sm"
             icon={<ArrowUpRight size={18} />}
           >
             Get Free Quote

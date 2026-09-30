@@ -212,7 +212,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-xs md:text-sm uppercase font-bold text-accent-orange bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-block tracking-wider"
+                className="text-xs md:text-sm uppercase font-bold text-amber-300 bg-amber-950/40 backdrop-blur-xl border border-amber-400/40 px-4 py-1.5 rounded-full inline-block tracking-widest shadow-xs"
               >
                 {slides[currentSlide].destination}
               </motion.span>
@@ -228,7 +228,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] pt-0 mt-0 text-center"
+                className="text-4xl md:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] pt-0 mt-0 text-center text-white drop-shadow-md"
               >
                 {slides[currentSlide].packageName}
               </motion.h1>
@@ -241,7 +241,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                className="text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed font-medium text-center mx-auto"
+                className="text-base md:text-lg text-slate-200 max-w-2xl leading-relaxed font-medium text-center mx-auto drop-shadow-xs"
               >
                 {slides[currentSlide].subtitle}
               </motion.p>
@@ -257,12 +257,15 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex items-center gap-4 bg-white/5 backdrop-blur-md px-6 py-2.5 rounded-2xl border border-white/10 justify-center"
+                className="flex items-center gap-4 bg-black/45 backdrop-blur-2xl px-6 py-2.5 rounded-2xl border border-amber-400/30 justify-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                style={{
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)"
+                }}
               >
-                <span className="text-slate-400 text-xs uppercase font-extrabold tracking-widest">
+                <span className="text-amber-200/80 text-xs uppercase font-extrabold tracking-widest">
                   {slides[currentSlide].duration}
                 </span>
-                <span className="text-2xl md:text-3xl font-display font-extrabold text-accent-orange">
+                <span className="text-2xl md:text-3xl font-display font-extrabold text-amber-400">
                   {slides[currentSlide].price}
                 </span>
               </motion.div>
@@ -275,7 +278,6 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
               variant="solid"
               size="lg"
               onClick={handleScrollToForm}
-              className="bg-accent-orange hover:bg-orange-600 border-none shadow-[0_4px_20px_rgba(249,115,22,0.3)] hover:shadow-[0_8px_30px_rgba(249,115,22,0.5)] transition-all"
             >
               {slides[currentSlide].cta}
             </Button>
@@ -283,7 +285,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
               variant="white"
               size="lg"
               onClick={handleWhatsApp}
-              className="!text-emerald-400 hover:!bg-white/10 !bg-transparent border border-emerald-500/20"
+              className="!text-emerald-400 hover:!bg-white/10 !bg-white/5 backdrop-blur-md border border-emerald-500/30"
               icon={<MessageCircle size={18} className="fill-emerald-400 stroke-none animate-pulse-slow" />}
             >
               WhatsApp
@@ -292,7 +294,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
               variant="white"
               size="lg"
               onClick={handleCall}
-              className="!bg-white/10 hover:!bg-white/20 !text-white border border-white/10"
+              className="!bg-white/10 hover:!bg-white/20 !text-white border border-white/20 backdrop-blur-md"
               icon={<Phone size={18} />}
             >
               Call Now
@@ -300,33 +302,33 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
           </div>
 
           {/* Trust Indicators Centered */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full pt-8 border-t border-white/10">
-            <div className="flex flex-col items-center text-center space-y-2">
-              <Star className="text-accent-orange shrink-0 fill-accent-orange" size={22} />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6 w-full pt-8 border-t border-white/15">
+            <div className="flex flex-col items-center text-center space-y-2 p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <Star className="text-amber-400 shrink-0 fill-amber-400" size={20} />
               <div>
                 <h5 className="text-xs font-bold text-white uppercase tracking-wider">Google Rated</h5>
-                <p className="text-[10px] text-slate-400">4.9/5 Star Rating</p>
+                <p className="text-[10px] text-slate-300">4.9/5 Star Rating</p>
               </div>
             </div>
-            <div className="flex flex-col items-center text-center space-y-2">
-              <Shield className="text-accent-orange shrink-0" size={22} />
+            <div className="flex flex-col items-center text-center space-y-2 p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <Shield className="text-amber-400 shrink-0" size={20} />
               <div>
                 <h5 className="text-xs font-bold text-white uppercase tracking-wider">GST Registered</h5>
-                <p className="text-[10px] text-slate-400">Baba Vishwanath Traders</p>
+                <p className="text-[10px] text-slate-300">Baba Vishwanath Traders</p>
               </div>
             </div>
-            <div className="flex flex-col items-center text-center space-y-2">
-              <Users className="text-accent-orange shrink-0" size={22} />
+            <div className="flex flex-col items-center text-center space-y-2 p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <Users className="text-amber-400 shrink-0" size={20} />
               <div>
                 <h5 className="text-xs font-bold text-white uppercase tracking-wider">Happy Travellers</h5>
-                <p className="text-[10px] text-slate-400">12,000+ Journeys</p>
+                <p className="text-[10px] text-slate-300">12,000+ Journeys</p>
               </div>
             </div>
-            <div className="flex flex-col items-center text-center space-y-2">
-              <Phone className="text-accent-orange shrink-0" size={22} />
+            <div className="flex flex-col items-center text-center space-y-2 p-3 rounded-xl bg-white/5 backdrop-blur-md border border-white/10">
+              <Phone className="text-amber-400 shrink-0" size={20} />
               <div>
                 <h5 className="text-xs font-bold text-white uppercase tracking-wider">24x7 Assistance</h5>
-                <p className="text-[10px] text-slate-400">On-Trip Support</p>
+                <p className="text-[10px] text-slate-300">On-Trip Support</p>
               </div>
             </div>
           </div>
@@ -337,14 +339,14 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
       {/* Navigation Arrows */}
       <button
         onClick={handlePrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white backdrop-blur-sm transition-all cursor-pointer"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white backdrop-blur-md transition-all cursor-pointer shadow-lg"
         aria-label="Previous slide"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white backdrop-blur-sm transition-all cursor-pointer"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white backdrop-blur-md transition-all cursor-pointer shadow-lg"
         aria-label="Next slide"
       >
         <ChevronRight size={24} />
@@ -357,7 +359,7 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
             key={idx}
             onClick={() => setCurrentSlide(idx)}
             className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              idx === currentSlide ? "bg-accent-orange w-8" : "bg-white/30 hover:bg-white/50 w-2.5"
+              idx === currentSlide ? "bg-amber-400 w-8 shadow-xs" : "bg-white/30 hover:bg-white/50 w-2.5"
             }`}
             aria-label={`Go to slide ${idx + 1}`}
           />

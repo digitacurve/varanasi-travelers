@@ -28,14 +28,14 @@ export const WhyChoose: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-20">
-          <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange bg-orange-50 px-3.5 py-1 rounded-full inline-block mb-2 tracking-widest border border-orange-100/60 shadow-sm">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-16">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-amber-300 bg-white/8 backdrop-blur-xl border border-white/20 px-4 py-1.5 rounded-full inline-block mb-2 tracking-widest shadow-xs">
             The Divine Standard
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-white tracking-tight">
             Why Pilgrims Choose Divine Journeys
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-slate-500 mt-2 md:mt-4 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 mt-2 md:mt-4 leading-relaxed">
             We do not just organize tours; we curate sacred milestones. Every detail of your journey is handled with devotion, security, and absolute transparency.
           </p>
         </div>
@@ -57,19 +57,22 @@ export const WhyChoose: React.FC = () => {
               <motion.div
                 key={item.id}
                 variants={cardVariants}
-                className={`bg-white p-3 sm:p-5 md:p-8 rounded-xl md:rounded-3xl border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.02)] hover:shadow-[0_16px_36px_rgba(15,23,42,0.06)] hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-start ${
+                className={`bg-white/[0.07] backdrop-blur-3xl p-3 sm:p-5 md:p-8 rounded-xl md:rounded-3xl border border-white/15 hover:border-white/30 hover:bg-white/[0.12] transition-all duration-300 group flex flex-col justify-start ${
                   isLast && isOdd
                     ? "col-span-2 sm:col-span-1 justify-self-center w-full max-w-[calc(50%-6px)] sm:max-w-none lg:col-span-1"
                     : ""
                 }`}
+                style={{
+                  boxShadow: "0 20px 48px -10px rgba(0, 0, 0, 0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.25)"
+                }}
               >
-                <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-orange-50 group-hover:bg-accent-orange text-accent-orange group-hover:text-white flex items-center justify-center mb-2 sm:mb-4 md:mb-6 transition-colors duration-300 shrink-0">
+                <div className="w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-white/10 border border-white/20 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-500 text-amber-400 group-hover:text-white flex items-center justify-center mb-2 sm:mb-4 md:mb-6 transition-all duration-300 shrink-0 shadow-xs">
                   <IconComponent size={15} className="sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-[2]" />
                 </div>
-                <h3 className="text-[11px] sm:text-sm md:text-lg font-display font-bold text-dark-slate mb-1 sm:mb-1.5 md:mb-3 group-hover:text-accent-orange transition-colors duration-300 leading-tight">
+                <h3 className="text-[11px] sm:text-sm md:text-lg font-display font-bold text-white mb-1 sm:mb-1.5 md:mb-3 group-hover:text-amber-300 transition-colors duration-300 leading-tight">
                   {item.title}
                 </h3>
-                <p className="text-[9.5px] sm:text-xs md:text-sm text-slate-500 leading-tight sm:leading-snug md:leading-relaxed">
+                <p className="text-[9.5px] sm:text-xs md:text-sm text-slate-300 leading-tight sm:leading-snug md:leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
