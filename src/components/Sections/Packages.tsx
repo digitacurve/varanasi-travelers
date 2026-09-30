@@ -112,10 +112,10 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
         <div 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto pb-4 pt-2 -mx-4 px-4 snap-x snap-mandatory gap-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8 no-scrollbar"
+          className="flex overflow-x-auto pb-4 pt-2 -mx-4 px-4 snap-x snap-mandatory gap-3.5 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8 no-scrollbar"
         >
           {filteredPackages.map((pkg) => (
-            <div key={pkg.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center sm:w-auto sm:max-w-none sm:shrink">
+            <div key={pkg.id} className="w-[74vw] max-w-[295px] shrink-0 snap-start sm:w-auto sm:max-w-none sm:shrink">
               <PackageCard 
                 pkg={pkg} 
                 onSelect={onSelectPackage} 
