@@ -124,11 +124,11 @@ export const Inclusions: React.FC = () => {
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar"
+          className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-3.5 sm:gap-6 md:gap-8 max-w-6xl mx-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar"
         >
           {/* Left Column: Standard Package Details */}
           <div 
-            className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-white/[0.07] backdrop-blur-3xl p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/15 flex flex-col justify-between"
+            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full shrink-0 snap-start bg-white/[0.07] backdrop-blur-3xl p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/15 flex flex-col justify-between"
             style={{
               boxShadow: "0 24px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.25)"
             }}
@@ -177,7 +177,7 @@ export const Inclusions: React.FC = () => {
 
           {/* Right Column: Premium/Luxury Upgrades */}
           <div 
-            className="w-[86vw] max-w-[360px] sm:w-[400px] lg:w-full shrink-0 snap-center bg-gradient-to-br from-amber-950/30 via-white/[0.08] to-black/60 backdrop-blur-3xl text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-400/40 relative overflow-hidden flex flex-col justify-between"
+            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full shrink-0 snap-start bg-gradient-to-br from-amber-950/30 via-white/[0.08] to-black/60 backdrop-blur-3xl text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-400/40 relative overflow-hidden flex flex-col justify-between"
             style={{
               boxShadow: "0 24px 50px -10px rgba(245, 158, 11, 0.15), 0 12px 32px rgba(0,0,0,0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.3)"
             }}

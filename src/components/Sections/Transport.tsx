@@ -32,11 +32,11 @@ export const Transport: React.FC = () => {
         </div>
 
         {/* Vehicles Grid / Mobile Swipeable Carousel */}
-        <div className="flex overflow-x-auto pb-4 pt-1 -mx-4 px-4 snap-x snap-mandatory gap-3 sm:gap-4 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+        <div className="flex overflow-x-auto pb-4 pt-1 -mx-4 px-4 snap-x snap-mandatory gap-3.5 sm:gap-4 lg:mx-0 lg:px-0 lg:grid lg:grid-cols-3 lg:gap-8 no-scrollbar">
           {vehicles.map((vehicle) => (
             <div
               key={vehicle.id}
-              className="w-[82vw] max-w-[320px] shrink-0 snap-center lg:w-auto lg:max-w-none lg:shrink bg-white/[0.07] backdrop-blur-3xl rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 hover:border-white/30 transition-all duration-300 flex flex-col h-full group"
+              className="w-[76vw] max-w-[295px] shrink-0 snap-start lg:w-auto lg:max-w-none lg:shrink bg-white/[0.07] backdrop-blur-3xl rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 hover:border-white/30 transition-all duration-300 flex flex-col h-full group"
               style={{
                 boxShadow: "0 24px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.25)"
               }}
