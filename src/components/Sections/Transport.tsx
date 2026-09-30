@@ -42,18 +42,18 @@ export const Transport: React.FC = () => {
               }}
             >
               {/* Image & Capacity Metrics */}
-              <div className="relative h-44 sm:h-50 md:h-56 w-full bg-slate-900 overflow-hidden">
+              <div className="relative h-44 sm:h-50 md:h-56 w-full bg-gradient-to-b from-slate-900/90 to-slate-950 overflow-hidden flex items-center justify-center p-2 sm:p-3">
                 <Image
                   src={vehicle.image}
                   alt={vehicle.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-contain p-2 transition-transform duration-500 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
                 
                 {/* Float Badge: AC standard */}
-                <div className="absolute top-3 right-3 md:top-4 md:right-4 bg-black/60 backdrop-blur-md text-white text-[9px] md:text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 md:px-3 md:py-1.5 rounded-full flex items-center gap-1 shadow-md border border-white/10">
+                <div className="absolute top-2.5 right-2.5 md:top-4 md:right-4 bg-black/70 backdrop-blur-md text-white text-[8.5px] md:text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 md:px-3 md:py-1.5 rounded-full flex items-center gap-1 shadow-md border border-white/10 z-10">
                   <Snowflake size={10} className="text-cyan-400 animate-spin-slow" />
                   <span>Dual AC Zone</span>
                 </div>
