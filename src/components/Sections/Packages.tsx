@@ -29,6 +29,14 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
 
   useEffect(() => {
     setMounted(true);
+    const handleFilterEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      if (customEvent.detail) {
+        handleCategoryChange(customEvent.detail);
+      }
+    };
+    window.addEventListener("filter-package-category", handleFilterEvent);
+    return () => window.removeEventListener("filter-package-category", handleFilterEvent);
   }, []);
 
   const handleCategoryChange = (cat: string) => {

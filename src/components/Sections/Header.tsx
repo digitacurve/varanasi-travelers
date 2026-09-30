@@ -12,8 +12,34 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isPackagesOpen, setIsPackagesOpen] = useState(true);
+  const [isPackagesOpen, setIsPackagesOpen] = useState(false);
   const [isDesktopPackagesOpen, setIsDesktopPackagesOpen] = useState(false);
+
+  const destinationCategories = [
+    { name: "All Packages", filter: "All" },
+    { name: "Varanasi", filter: "Varanasi" },
+    { name: "Ayodhya", filter: "Ayodhya" },
+    { name: "Prayagraj", filter: "Prayagraj" },
+    { name: "Ujjain", filter: "Ujjain" },
+    { name: "Gaya", filter: "Gaya" },
+  ];
+
+  const handleCategoryClick = (e: React.MouseEvent, filter: string) => {
+    setIsMobileMenuOpen(false);
+    setIsDesktopPackagesOpen(false);
+    if (typeof window !== "undefined") {
+      if (window.location.pathname === "/") {
+        e.preventDefault();
+        const targetElement = document.querySelector("#packages");
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+        window.dispatchEvent(new CustomEvent("filter-package-category", { detail: filter }));
+      } else {
+        window.location.href = `/#packages`;
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -133,38 +159,25 @@ export const Header: React.FC = () => {
                     {/* Desktop Hover Dropdown */}
                     {isDesktopPackagesOpen && (
                       <div 
-                        className="absolute top-full left-1/2 -translate-x-1/2 w-72 bg-slate-950/90 backdrop-blur-3xl rounded-2xl border border-white/15 p-3 flex flex-col gap-1 z-50 animate-in fade-in zoom-in-95 duration-150"
+                        className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-slate-950/95 backdrop-blur-3xl rounded-2xl border border-white/15 p-3 flex flex-col gap-2 z-50 animate-in fade-in zoom-in-95 duration-150"
                         style={{
                           boxShadow: "0 20px 48px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.2)"
                         }}
                       >
-                        <a
-                          href="/#packages"
-                          onClick={(e) => handleNavClick(e, "/#packages")}
-                          className="text-xs font-bold text-amber-400 hover:bg-white/10 px-3 py-2 rounded-xl flex items-center gap-1.5 transition-colors"
-                        >
-                          ⚡ View All Packages
-                        </a>
-                        <div className="border-t border-white/10 my-1 pt-1 max-h-80 overflow-y-auto">
-                          {extendedPackages.map((pkg) => {
-                            const slug = pkg.id.replace("-tour-package", "");
-                            const href = `/packages/${slug}`;
-                            const isActive = pathname === href;
-                            return (
-                              <Link
-                                key={pkg.id}
-                                href={href}
-                                className={`text-xs px-3 py-2 rounded-lg flex items-center gap-2 transition-colors ${
-                                  isActive
-                                    ? "text-amber-400 font-bold bg-amber-500/15"
-                                    : "text-slate-300 hover:text-amber-300 hover:bg-white/5 font-medium"
-                                }`}
-                              >
-                                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-amber-400" : "bg-slate-600"}`} />
-                                <span className="truncate">{pkg.name} ({pkg.duration.split("/")[0].trim()})</span>
-                              </Link>
-                            );
-                          })}
+                        <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">
+                          Filter by Destination
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {destinationCategories.map((cat) => (
+                            <button
+                              key={cat.name}
+                              onClick={(e) => handleCategoryClick(e, cat.filter)}
+                              className="text-xs px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-600 hover:text-white text-slate-200 font-medium transition-all duration-200 border border-white/10 hover:border-amber-400/40 cursor-pointer flex items-center gap-1.5"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                              {cat.name}
+                            </button>
+                          ))}
                         </div>
                       </div>
                     )}
@@ -227,7 +240,7 @@ export const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Mobile Floating Dropdown Popover Card (Compact & neatly styled like screenshot) */}
+        {/* Mobile Floating Dropdown Popover Card (Compact & neatly styled) */}
         {isMobileMenuOpen && (
           <div 
             className="lg:hidden absolute right-3.5 top-full mt-2 w-[280px] sm:w-[310px] bg-slate-950/95 backdrop-blur-3xl rounded-3xl border border-white/15 p-4 max-h-[82vh] overflow-y-auto pointer-events-auto z-50 animate-in fade-in zoom-in-95 duration-200"
@@ -244,45 +257,24 @@ export const Header: React.FC = () => {
               >
                 <span className="font-display tracking-tight text-white">Packages</span>
                 {isPackagesOpen ? (
-                  <ChevronUp size={16} className="text-slate-400" />
+                  <ChevronUp size={16} className="text-amber-400" />
                 ) : (
                   <ChevronDown size={16} className="text-slate-400" />
                 )}
               </button>
 
               {isPackagesOpen && (
-                <div className="pl-2 pr-1 pt-1 pb-1 flex flex-col gap-1 border-l-2 border-amber-500/40 ml-3.5 mt-1">
-                  {/* View All Packages */}
-                  <a
-                    href="/#packages"
-                    onClick={(e) => handleNavClick(e, "/#packages")}
-                    className="flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 px-2 py-1.5 rounded-lg hover:bg-white/5 transition-colors"
-                  >
-                    <span>⚡ View All Packages</span>
-                  </a>
-
-                  {/* List of all packages with dots & links */}
-                  {extendedPackages.map((pkg) => {
-                    const slug = pkg.id.replace("-tour-package", "");
-                    const href = `/packages/${slug}`;
-                    const isActive = pathname === href;
-
-                    return (
-                      <Link
-                        key={pkg.id}
-                        href={href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-[12.5px] leading-snug px-2 py-1.5 rounded-lg transition-colors flex items-center gap-2 ${
-                          isActive
-                            ? "text-amber-400 font-bold bg-amber-500/20"
-                            : "text-slate-300 hover:text-amber-300 hover:bg-white/5 font-normal"
-                        }`}
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-amber-400" : "bg-slate-600"}`} />
-                        <span className="truncate">{pkg.name} ({pkg.duration.split("/")[0].trim()})</span>
-                      </Link>
-                    );
-                  })}
+                <div className="pt-2 pb-1.5 px-1.5 flex flex-wrap gap-1.5 border-l-2 border-amber-500/40 ml-3.5 mt-1">
+                  {destinationCategories.map((cat) => (
+                    <button
+                      key={cat.name}
+                      onClick={(e) => handleCategoryClick(e, cat.filter)}
+                      className="text-xs px-3 py-1.5 rounded-full bg-white/[0.08] hover:bg-gradient-to-r hover:from-amber-500 hover:to-orange-600 hover:text-white text-slate-200 font-medium transition-all duration-200 border border-white/10 active:scale-95 cursor-pointer flex items-center gap-1.5"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
+                      {cat.name}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
