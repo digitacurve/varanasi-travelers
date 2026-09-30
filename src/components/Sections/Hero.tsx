@@ -257,15 +257,12 @@ export const Hero: React.FC<HeroProps> = ({ selectedPackageId, onSelectPackage }
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex items-center gap-4 bg-black/45 backdrop-blur-2xl px-6 py-2.5 rounded-2xl border border-amber-400/30 justify-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-                style={{
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)"
-                }}
+                className="flex items-center gap-4 justify-center"
               >
-                <span className="text-amber-200/80 text-xs uppercase font-extrabold tracking-widest">
+                <span className="text-amber-200/90 text-xs uppercase font-extrabold tracking-widest drop-shadow-md">
                   {slides[currentSlide].duration}
                 </span>
-                <span className="text-2xl md:text-3xl font-display font-extrabold text-amber-400">
+                <span className="text-2xl md:text-3xl font-display font-extrabold text-amber-400 drop-shadow-md">
                   {slides[currentSlide].price}
                 </span>
               </motion.div>
