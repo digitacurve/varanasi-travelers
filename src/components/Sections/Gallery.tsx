@@ -77,7 +77,7 @@ export const Gallery: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section id="gallery" className="py-14 md:py-20 bg-transparent relative select-none">
+    <section id="gallery" className="py-6 md:py-20 bg-transparent relative select-none">
       
       {/* Dynamic CSS marquee rules */}
       <style dangerouslySetInnerHTML={{__html: `
@@ -88,7 +88,7 @@ export const Gallery: React.FC = () => {
         .animate-marquee-scroll {
           display: flex;
           width: max-content;
-          animation: marquee 40s linear infinite;
+          animation: marquee 95s linear infinite;
         }
         .animate-marquee-paused {
           animation-play-state: paused !important;
@@ -98,20 +98,20 @@ export const Gallery: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 px-4 py-1.5 rounded-full inline-block mb-3 tracking-widest">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange bg-orange-50 px-3.5 py-1 rounded-full inline-block mb-2 tracking-widest border border-orange-100/60 shadow-sm">
             Visual Darshan
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
             Pilgrimage Photo Gallery
           </h2>
-          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-500 mt-2 md:mt-4 leading-relaxed">
             Take a visual tour through India's holy lands. Explore the ghats of Varanasi, the grandeur of Ayodhya, the confluence of Prayagraj, and the temples of Ujjain.
           </p>
         </div>
 
         {/* Filter Categories */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-12">
           {categories.map((cat) => (
             <button
               key={cat}

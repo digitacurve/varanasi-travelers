@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PackageCard } from "../UI/PackageCard";
 import { PackageDetailsModal } from "../UI/PackageDetailsModal";
@@ -13,11 +13,44 @@ interface PackagesProps {
 
 export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding = false }) => {
   const [selectedPkgForModal, setSelectedPkgForModal] = useState<ExtendedPackage | null>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   const [mounted, setMounted] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const categories = ["All", "Varanasi", "Ayodhya", "Prayagraj", "Ujjain", "Gaya"];
+
+  const filteredPackages = extendedPackages.filter((pkg) => {
+    if (activeCategory === "All") return true;
+    return pkg.destinations.some((d) =>
+      d.toLowerCase().includes(activeCategory.toLowerCase())
+    );
+  });
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setScrollProgress(0);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      if (maxScroll > 0) {
+        const progress = Math.min(100, Math.max(0, (scrollLeft / maxScroll) * 100));
+        setScrollProgress(progress);
+      } else {
+        setScrollProgress(0);
+      }
+    }
+  };
 
   return (
     <section id="packages" className={`${noPadding ? "py-12 md:py-16" : "py-20 md:py-28"} ${noPadding ? "" : "bg-gradient-to-b from-white via-orange-50/10 to-white"} relative overflow-hidden`}>
@@ -33,7 +66,7 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-12">
           <span className="text-xs uppercase font-extrabold text-accent-orange bg-orange-50 border border-orange-100/50 px-4 py-1.5 rounded-full inline-block mb-3.5 tracking-wider select-none shadow-sm">
             ✨ SACRED EXPERIENCES
           </span>
@@ -45,10 +78,31 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
           </p>
         </div>
 
-        {/* Brand-New Tour Packages Grid */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-10">
-          {extendedPackages.map((pkg) => (
-            <div key={pkg.id} className="w-full max-w-md">
+        {/* Destination Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => handleCategoryChange(cat)}
+              className={`px-5 py-2 rounded-full font-display text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
+                activeCategory === cat
+                  ? "bg-dark-slate text-white shadow-md shadow-slate-900/10"
+                  : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-dark-slate"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Tour Packages Carousel on Mobile / Grid on Desktop */}
+        <div 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex overflow-x-auto pb-4 pt-2 -mx-4 px-4 snap-x snap-mandatory gap-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 md:gap-8 no-scrollbar"
+        >
+          {filteredPackages.map((pkg) => (
+            <div key={pkg.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center sm:w-auto sm:max-w-none sm:shrink">
               <PackageCard 
                 pkg={pkg} 
                 onSelect={onSelectPackage} 
@@ -58,8 +112,23 @@ export const Packages: React.FC<PackagesProps> = ({ onSelectPackage, noPadding =
           ))}
         </div>
 
+        {/* Mobile Interactive Sliding Bar */}
+        {filteredPackages.length > 1 && (
+          <div className="flex sm:hidden justify-center items-center mt-3">
+            <div className="w-36 h-1.5 bg-slate-200/90 rounded-full overflow-hidden relative">
+              <div 
+                className="h-full bg-gradient-to-r from-accent-orange to-amber-500 rounded-full transition-all duration-150 ease-out"
+                style={{ 
+                  width: "35%", 
+                  transform: `translateX(${(scrollProgress / 100) * 185}%)` 
+                }}
+              />
+            </div>
+          </div>
+        )}
+
         {/* Pricing Footnote */}
-        <p className="text-[10px] md:text-xs text-slate-400 text-center mt-12 leading-relaxed select-none">
+        <p className="text-[10px] md:text-xs text-slate-400 text-center mt-8 md:mt-12 leading-relaxed select-none">
           *Prices shown are starting rates per person. Stated price may vary depending on hotel availability, season, and group sizes. GST (5%) & monument entry tickets are extra.
         </p>
 

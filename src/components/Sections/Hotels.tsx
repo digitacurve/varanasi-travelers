@@ -45,24 +45,24 @@ export const Hotels: React.FC = () => {
   ];
 
   return (
-    <section id="hotels" className="py-14 md:py-20 bg-transparent relative">
+    <section id="hotels" className="py-6 md:py-20 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 px-4 py-1.5 rounded-full inline-block mb-4 tracking-widest">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange bg-orange-50 px-3.5 py-1 rounded-full inline-block mb-2 md:mb-4 tracking-widest border border-orange-100/60 shadow-sm">
             Premium Accommodation
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight uppercase">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight uppercase">
             Our Trusted Hotel Partners
           </h2>
-          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs sm:text-sm md:text-base text-slate-500 mt-2 md:mt-4 leading-relaxed max-w-2xl mx-auto">
             We partner with carefully selected hotels across Ayodhya, Varanasi, Prayagraj, and Ujjain to provide clean rooms, comfortable stays, vegetarian dining options, and convenient access to major temples. Hotel allocation depends on your selected package and availability.
           </p>
         </div>
 
         {/* Elegant Responsive Wordmarks Row */}
-        <div className="border-y border-slate-100 py-10 md:py-12 mt-8 flex flex-wrap items-center justify-center gap-y-12 gap-x-16 md:gap-x-24 lg:gap-x-28">
+        <div className="border-y border-slate-100 py-6 md:py-12 mt-4 md:mt-8 flex flex-wrap items-center justify-center gap-y-6 md:gap-y-12 gap-x-10 sm:gap-x-16 md:gap-x-24 lg:gap-x-28">
           {partners.map((partner, index) => (
             <div
               key={index}
@@ -85,7 +85,7 @@ export const Hotels: React.FC = () => {
                 style={{
                   color: hoveredIndex === index ? "#64748b" : "#cbd5e1", // Slate-500 vs Slate-300
                 }}
-                className="text-[9px] tracking-[0.25em] transition-colors duration-500 uppercase font-sans font-semibold mt-2.5"
+                className="text-[8px] sm:text-[9px] tracking-[0.25em] transition-colors duration-500 uppercase font-sans font-semibold mt-1.5 md:mt-2.5"
               >
                 {partner.tagline}
               </span>

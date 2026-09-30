@@ -318,7 +318,7 @@ export default function Home() {
             {/* Layout content wrapper */}
             <div className="relative z-10 w-full">
               {/* Inquiry Form Section directly below Hero */}
-              <section id="inquiry-form-section" className="py-16 md:py-24 bg-transparent border-b border-orange-100/30 relative overflow-hidden">
+              <section id="inquiry-form-section" className="py-6 md:py-24 bg-transparent border-b border-orange-100/30 relative overflow-hidden">
                 {/* Saffron soft radial glow effects and faint mandalas rendered client-side only to prevent hydration warnings */}
                 {mounted && (
                   <>
@@ -380,7 +380,7 @@ export default function Home() {
                 )}
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 gap-x-12 lg:gap-x-16 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 lg:gap-y-12 gap-x-12 lg:gap-x-16 items-start">
                     
                     {/* Left Column: White Glassmorphism Form Card (5 cols on desktop) */}
                     <div className="col-span-1 lg:col-span-5 row-start-1 lg:row-start-1 flex justify-center lg:justify-start w-full relative z-10">
@@ -393,7 +393,7 @@ export default function Home() {
                     </div>
 
                     {/* Right Column: Heading, descriptions, gold accents, and trust cards (7 cols on desktop) */}
-                    <div className="col-span-1 lg:col-span-7 row-start-3 lg:row-start-1 space-y-8 text-left relative z-10">
+                    <div className="col-span-1 lg:col-span-7 row-start-3 lg:row-start-1 space-y-4 md:space-y-8 text-left relative z-10">
                       {/* Subtle Saffron Badge */}
                       <div>
                         <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 border border-orange-100 px-3.5 py-1.5 rounded-full inline-block tracking-wider shadow-sm">
@@ -402,60 +402,60 @@ export default function Home() {
                       </div>
 
                       {/* Section Heading & Subtitle */}
-                      <div className="space-y-4">
-                        <h2 className="text-3xl md:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
+                      <div className="space-y-2 md:space-y-4">
+                        <h2 className="text-2xl md:text-4xl font-display font-extrabold text-slate-900 tracking-tight leading-tight">
                           Plan Your <span className="text-accent-orange">Spiritual Journey</span>
                         </h2>
                         {/* Subtle gold line accent */}
                         <div className="h-1 w-20 bg-gradient-to-r from-accent-orange to-amber-500 rounded-full" />
-                        <p className="text-base text-slate-600 max-w-xl leading-relaxed">
+                        <p className="text-xs sm:text-base text-slate-600 max-w-xl leading-relaxed">
                           Share your travel preferences and receive a custom-tailored package estimate. Our local pilgrimage experts will design the perfect itinerary with handpicked hotels, private transport, and seamless VIP Darshan.
                         </p>
                       </div>
 
-                      {/* Trust Indicators Grid with luxury medallion icons, cream backgrounds, and subtle hover animations */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                      {/* Trust Indicators Grid - 2x2 on Mobile, 2-column on Desktop */}
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 pt-2 sm:pt-4">
                         {/* Google Rating */}
-                        <div className="flex items-start gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-5 rounded-2xl border border-orange-100/60 shadow-[0_12px_32px_rgba(249,115,22,0.04)] shadow-orange-950/[0.01] transition-all duration-300 hover:shadow-xl hover:shadow-orange-950/[0.04] hover:border-orange-200 hover:-translate-y-1 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-3 rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
-                            <Star className="fill-white stroke-white" size={20} />
+                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
+                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                            <Star className="fill-white stroke-white w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">4.9/5 Google Rated</h4>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">Highly recommended for family and senior citizen care.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">4.9/5 Google Rated</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Highly recommended for family and senior citizen care.</p>
                           </div>
                         </div>
 
                         {/* GST Registered */}
-                        <div className="flex items-start gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-5 rounded-2xl border border-orange-100/60 shadow-[0_12px_32px_rgba(249,115,22,0.04)] shadow-orange-950/[0.01] transition-all duration-300 hover:shadow-xl hover:shadow-orange-950/[0.04] hover:border-orange-200 hover:-translate-y-1 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-3 rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
-                            <Shield size={20} />
+                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
+                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                            <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">GST Registered Agency</h4>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">Official tax invoicing under Baba Vishwanath Traders (09CVOPS2321B3ZK).</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">GST Registered Agency</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Official tax invoicing under Baba Vishwanath Traders (09CVOPS2321B3ZK).</p>
                           </div>
                         </div>
 
                         {/* Happy Travellers */}
-                        <div className="flex items-start gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-5 rounded-2xl border border-orange-100/60 shadow-[0_12px_32px_rgba(249,115,22,0.04)] shadow-orange-950/[0.01] transition-all duration-300 hover:shadow-xl hover:shadow-orange-950/[0.04] hover:border-orange-200 hover:-translate-y-1 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-3 rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
-                            <Users size={20} />
+                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
+                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                            <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">12,000+ Happy Pilgrims</h4>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">Memorable spiritual journeys designed for families.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">12,000+ Happy Pilgrims</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">Memorable spiritual journeys designed for families.</p>
                           </div>
                         </div>
 
                         {/* 24x7 Assistance */}
-                        <div className="flex items-start gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-5 rounded-2xl border border-orange-100/60 shadow-[0_12px_32px_rgba(249,115,22,0.04)] shadow-orange-950/[0.01] transition-all duration-300 hover:shadow-xl hover:shadow-orange-950/[0.04] hover:border-orange-200 hover:-translate-y-1 cursor-default">
-                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-3 rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
-                            <Phone size={20} />
+                        <div className="flex flex-col sm:flex-row items-start gap-2.5 sm:gap-4 bg-[#FFFDF9]/95 backdrop-blur-sm p-3.5 sm:p-4 md:p-5 rounded-xl md:rounded-2xl border border-orange-100/60 shadow-[0_8px_20px_rgba(249,115,22,0.03)] transition-all duration-300 hover:shadow-xl hover:border-orange-200 cursor-default">
+                          <div className="bg-gradient-to-br from-amber-400 via-accent-orange to-orange-600 text-white p-2 sm:p-2.5 md:p-3 rounded-lg sm:rounded-full shrink-0 shadow-[0_4px_12px_rgba(249,115,22,0.2)] flex items-center justify-center">
+                            <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                           </div>
                           <div>
-                            <h4 className="text-sm font-extrabold text-slate-800 uppercase tracking-wide">24/7 On-Trip Support</h4>
-                            <p className="text-xs text-slate-500 mt-1 leading-relaxed">On-ground assistance for rituals, darshans & queries.</p>
+                            <h4 className="text-[11px] sm:text-xs md:text-sm font-extrabold text-slate-800 uppercase tracking-wide leading-tight">24/7 On-Trip Support</h4>
+                            <p className="text-[10px] sm:text-xs text-slate-500 mt-1 leading-tight sm:leading-relaxed">On-ground assistance for rituals, darshans & queries.</p>
                           </div>
                         </div>
                       </div>

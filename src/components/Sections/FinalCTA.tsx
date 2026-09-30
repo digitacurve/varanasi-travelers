@@ -24,7 +24,7 @@ export const FinalCTA: React.FC = () => {
   };
 
   return (
-    <section className="py-14 md:py-18 bg-dark-slate relative overflow-hidden">
+    <section className="py-8 md:py-18 bg-dark-slate relative overflow-hidden">
       {/* Decorative background overlay */}
       <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{
         backgroundImage: "url('https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&q=80&w=1920')"
@@ -33,19 +33,19 @@ export const FinalCTA: React.FC = () => {
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-indigo-500/10 rounded-full filter blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 text-center text-white">
-        <span className="text-xs uppercase font-bold text-accent-orange tracking-widest block mb-4">
+        <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange tracking-widest block mb-2 md:mb-4">
           Bespoke Spiritual Experiences
         </span>
-        <h2 className="text-3xl md:text-5xl font-display font-extrabold tracking-tight leading-[1.15]">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-extrabold tracking-tight leading-[1.15]">
           Need Help Planning Your <br />
           <span className="text-accent-orange">Spiritual Journey?</span>
         </h2>
-        <p className="text-sm md:text-lg text-slate-300 max-w-2xl mx-auto mt-6 leading-relaxed">
+        <p className="text-xs sm:text-sm md:text-lg text-slate-300 max-w-2xl mx-auto mt-3 md:mt-6 leading-relaxed">
           Our destination planners will design a customized tour covering temple entries, local pujas, private transits, and comfortable hotel layouts suitable for elderly parents and families.
         </p>
 
         {/* Buttons Group */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-10">
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-6 md:mt-10">
           <Button
             variant="solid"
             size="lg"
@@ -75,7 +75,7 @@ export const FinalCTA: React.FC = () => {
         </div>
 
         {/* Support callouts */}
-        <p className="text-xs text-slate-400 mt-6 italic">
+        <p className="text-[10px] md:text-xs text-slate-400 mt-4 md:mt-6 italic">
           *No credit card details required. Receive complete customized travel itineraries for free.
         </p>
       </div>

@@ -6,18 +6,18 @@ import { faqs } from "@/data/content";
 
 export const FAQ: React.FC = () => {
   return (
-    <section id="faq" className="py-14 md:py-20 bg-transparent relative">
+    <section id="faq" className="py-6 md:py-20 bg-transparent relative">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase font-bold text-accent-orange bg-orange-50 px-4 py-1.5 rounded-full inline-block mb-3 tracking-widest">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-16">
+          <span className="text-[10px] sm:text-xs uppercase font-bold text-accent-orange bg-orange-50 px-3.5 py-1 rounded-full inline-block mb-2 tracking-widest border border-orange-100/60 shadow-sm">
             Common Inquiries
           </span>
-          <h2 className="text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-dark-slate tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm md:text-base text-slate-500 mt-4 leading-relaxed">
+          <p className="text-xs sm:text-sm md:text-base text-slate-500 mt-2 md:mt-4 leading-relaxed">
             Have questions about temple timings, ritual assistance, custom bookings, or payment methods? Find quick answers compiled from our past pilgrim experiences.
           </p>
         </div>
@@ -28,7 +28,7 @@ export const FAQ: React.FC = () => {
         </div>
 
         {/* Contact Help footer */}
-        <div className="text-center mt-12 text-xs md:text-sm text-slate-500">
+        <div className="text-center mt-6 md:mt-12 text-xs md:text-sm text-slate-500">
           Have more specific questions? Chat directly with an expert advisor.{" "}
           <a
             href="https://wa.me/919288100260"
