@@ -22,19 +22,28 @@ export interface GoogleReviewsResponse {
   reviews: GoogleReviewItem[];
 }
 
+export const revalidate = 3600; // Auto-revalidate cache every 1 hour
+
 export async function GET() {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 
   // If no Google Places API key is provided, return empty reviews cleanly without fake data
   if (!apiKey) {
-    return NextResponse.json<GoogleReviewsResponse>({
-      configured: false,
-      businessName: "Varanasi Travelers — A unit of Baba Vishwanath Traders",
-      googleProfileName: "Baba Vishwanath Traders",
-      rating: null,
-      totalReviews: null,
-      reviews: [],
-    });
+    return NextResponse.json<GoogleReviewsResponse>(
+      {
+        configured: false,
+        businessName: "Varanasi Travelers — A unit of Baba Vishwanath Traders",
+        googleProfileName: "Baba Vishwanath Traders",
+        rating: null,
+        totalReviews: null,
+        reviews: [],
+      },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      }
+    );
   }
 
   try {
@@ -51,7 +60,12 @@ export async function GET() {
     const data = await response.json();
     const result = data.result || {};
 
-    const reviews: GoogleReviewItem[] = (result.reviews || []).map(
+    // Sort live reviews newest first if timestamp exists
+    const rawReviews = [...(result.reviews || [])].sort(
+      (a: any, b: any) => (b.time || 0) - (a.time || 0)
+    );
+
+    const reviews: GoogleReviewItem[] = rawReviews.map(
       (r: any, idx: number) => ({
         id: `${r.time || idx}`,
         authorName: r.author_name || "Google Reviewer",
@@ -63,17 +77,24 @@ export async function GET() {
       })
     );
 
-    return NextResponse.json<GoogleReviewsResponse>({
-      configured: true,
-      businessName: "Varanasi Travelers — A unit of Baba Vishwanath Traders",
-      googleProfileName: result.name || "Baba Vishwanath Traders",
-      rating: typeof result.rating === "number" ? result.rating : null,
-      totalReviews:
-        typeof result.user_ratings_total === "number"
-          ? result.user_ratings_total
-          : null,
-      reviews,
-    });
+    return NextResponse.json<GoogleReviewsResponse>(
+      {
+        configured: true,
+        businessName: "Varanasi Travelers — A unit of Baba Vishwanath Traders",
+        googleProfileName: result.name || "Baba Vishwanath Traders",
+        rating: typeof result.rating === "number" ? result.rating : null,
+        totalReviews:
+          typeof result.user_ratings_total === "number"
+            ? result.user_ratings_total
+            : null,
+        reviews,
+      },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      }
+    );
   } catch (error) {
     console.error("Error fetching Google Reviews:", error);
     return NextResponse.json<GoogleReviewsResponse>(

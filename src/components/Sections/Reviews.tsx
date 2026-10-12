@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Star, Check } from "lucide-react";
 
@@ -19,6 +19,41 @@ const GOOGLE_WRITE_REVIEW_URL =
   "https://search.google.com/local/writereview?placeid=ChIJUyzcz14xjjkR-lXVYrGuIfw";
 
 const REAL_GOOGLE_REVIEWS: GoogleReviewItem[] = [
+  {
+    id: "rev-new-1",
+    authorName: "Vivek Singh",
+    avatarBg: "bg-[#d97706]",
+    hasStarBadge: true,
+    rating: 5,
+    timeAgo: "6 months ago",
+    text: "it was such a great experience guides were too good they knew every details every conor of the city loved it",
+  },
+  {
+    id: "rev-new-2",
+    authorName: "vivek singh",
+    avatarBg: "bg-[#0284c7]",
+    rating: 5,
+    timeAgo: "6 months ago",
+    text: "This was really good connecting with them their travel agency is the best",
+  },
+  {
+    id: "rev-new-3",
+    authorName: "Harshita Bhattacharya",
+    avatarBg: "bg-[#7c3aed]",
+    hasStarBadge: true,
+    rating: 5,
+    timeAgo: "9 months ago",
+    text: "I have travelled the world and travelled with so may agents and companies but I just cannot thank Pawan Bhaiya, for the trip I had in Varanasi! From the moment he picked us up to the moment he left us; I was beyond speechless with his arrangements and coordination. He treated my family like his own with utmost respect and gave us all so much love and care that I am thankful to him for this wonderful trip. It was such a joyful ride filled with smiles, knowledge and culture.",
+  },
+  {
+    id: "rev-new-4",
+    authorName: "Rupesh Mehta",
+    avatarBg: "bg-[#059669]",
+    hasStarBadge: true,
+    rating: 5,
+    timeAgo: "11 months ago",
+    text: "We Got opportunity to work with them this Diwali. Covering places like Ayodhya, Prayagraj and Varanasi. Tailored Itinerary made for our group was well planned. Guidance was continuous on daily basis with flexibility which is more appreciated. Provided us Guide for Varanasi which was very helpful for Darshan at various imp. Temples, local shopping etc. Cars were available from early morning till late nights. Very supportive team.",
+  },
   {
     id: "rev-1",
     authorName: "Brahmesh Tanikonda",
@@ -72,9 +107,62 @@ const REAL_GOOGLE_REVIEWS: GoogleReviewItem[] = [
 
 export const Reviews: React.FC = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [reviewsList, setReviewsList] = useState<GoogleReviewItem[]>(REAL_GOOGLE_REVIEWS);
+  const [totalReviewsCount, setTotalReviewsCount] = useState<number>(13);
+  const [averageRating, setAverageRating] = useState<number>(5.0);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/google-reviews")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!isMounted || !data) return;
+        if (data.configured) {
+          if (typeof data.totalReviews === "number" && data.totalReviews > 0) {
+            setTotalReviewsCount(data.totalReviews);
+          }
+          if (typeof data.rating === "number" && data.rating > 0) {
+            setAverageRating(data.rating);
+          }
+          if (Array.isArray(data.reviews) && data.reviews.length > 0) {
+            const apiItems: GoogleReviewItem[] = data.reviews.map((r: any, idx: number) => ({
+              id: r.id || `api-${idx}`,
+              authorName: r.authorName,
+              authorPhoto: r.authorPhoto || undefined,
+              rating: r.rating || 5,
+              timeAgo: r.relativeTimeDescription || "Recently",
+              text: r.text || "",
+            }));
+
+            // Merge newly fetched live reviews with existing genuine static reviews
+            // without duplicating by author name, preserving historical reviews
+            const merged = [...apiItems];
+            for (const staticRev of REAL_GOOGLE_REVIEWS) {
+              if (
+                !merged.some(
+                  (m) =>
+                    m.authorName.trim().toLowerCase() ===
+                    staticRev.authorName.trim().toLowerCase()
+                )
+              ) {
+                merged.push(staticRev);
+              }
+            }
+            setReviewsList(merged);
+          }
+        }
+      })
+      .catch((err) => {
+        console.warn("Google Reviews live sync fallback active:", err);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Duplicate reviews for continuous infinite seamless moving track
-  const allReviews = [...REAL_GOOGLE_REVIEWS, ...REAL_GOOGLE_REVIEWS];
+  const allReviews = [...reviewsList, ...reviewsList];
 
   return (
     <section id="reviews" className="py-10 md:py-14 bg-transparent relative overflow-hidden">
@@ -147,7 +235,7 @@ export const Reviews: React.FC = () => {
             </div>
 
             <p className="text-xs text-slate-300 font-medium mb-3 text-center lg:text-left">
-              9 Google reviews
+              {totalReviewsCount} Google reviews
             </p>
 
             {/* Write a review button */}

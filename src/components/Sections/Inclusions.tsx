@@ -124,43 +124,48 @@ export const Inclusions: React.FC = () => {
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-3.5 sm:gap-6 md:gap-8 max-w-6xl mx-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar"
+          className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory gap-3.5 sm:gap-6 md:gap-8 max-w-6xl mx-auto pb-4 pt-1 px-1 -mx-4 px-4 sm:mx-0 sm:px-0 lg:px-0 no-scrollbar"
         >
           {/* Left Column: Standard Package Details */}
           <div 
-            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full shrink-0 snap-start bg-white/[0.07] backdrop-blur-3xl p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/15 flex flex-col justify-between"
+            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full lg:max-w-none shrink-0 lg:shrink snap-start bg-white/[0.07] backdrop-blur-3xl p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/15 flex flex-col justify-between"
             style={{
               boxShadow: "0 24px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.25)"
             }}
           >
             <div>
-              <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
+              <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4 lg:pb-6 lg:mb-6 lg:min-h-[116px] flex flex-col justify-between">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] sm:text-xs uppercase font-extrabold text-orange-400 bg-orange-500/15 border border-orange-400/30 px-2.5 py-0.5 rounded-md tracking-wider">
                     Plan A
                   </span>
-                  <span className="text-[10px] text-slate-400 font-semibold">Included in all packages</span>
+                  <span className="text-[10px] lg:text-xs text-slate-400 font-semibold">Included in all packages</span>
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
-                  Standard & Deluxe Inclusions
-                </h3>
-                <p className="text-[11px] sm:text-xs text-slate-400 mt-1">
-                  Ideal for families seeking comfortable, worry-free sacred travels.
-                </p>
+                <div>
+                  <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
+                    Standard & Deluxe Inclusions
+                  </h3>
+                  <p className="text-[11px] sm:text-xs lg:text-sm text-slate-400 mt-1">
+                    Ideal for families seeking comfortable, worry-free sacred travels.
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-3 sm:space-y-4 lg:space-y-3">
                 {inclusions.map((item, index) => (
-                  <div key={index} className="flex gap-2.5 sm:gap-3.5 items-start">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-white/10 border border-white/15 text-orange-400 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                  <div 
+                    key={index} 
+                    className="flex gap-2.5 sm:gap-3.5 items-start lg:items-center lg:p-3.5 lg:rounded-xl lg:bg-white/[0.03] lg:border lg:border-white/5 lg:hover:bg-white/[0.06] lg:hover:border-white/15 lg:transition-all lg:duration-200 lg:min-h-[72px]"
+                  >
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-white/10 border border-white/15 text-orange-400 flex items-center justify-center shrink-0 mt-0.5 lg:mt-0 shadow-2xs">
                       {item.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-xs sm:text-sm font-display font-bold text-white flex items-center gap-1.5">
+                      <h4 className="text-xs sm:text-sm lg:text-[15px] font-display font-bold text-white flex items-center gap-1.5">
                         {item.title}
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-emerald-400 shrink-0" />
                       </h4>
-                      <p className="text-[10.5px] sm:text-xs text-slate-300 mt-0.5 leading-snug">
+                      <p className="text-[10.5px] sm:text-xs lg:text-sm text-slate-300 mt-0.5 leading-snug">
                         {item.includedDesc}
                       </p>
                     </div>
@@ -169,6 +174,15 @@ export const Inclusions: React.FC = () => {
               </div>
             </div>
 
+            {/* Desktop reassurance footer */}
+            <div className="hidden lg:flex items-center justify-between pt-4 mt-6 border-t border-white/10 text-xs text-slate-400">
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Standard pilgrims guarantee
+              </span>
+              <span className="text-orange-400/90 font-medium">Included as default</span>
+            </div>
+
+            {/* Mobile swipe helper */}
             <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 lg:hidden">
               <span>Swipe for Plan B Luxury</span>
               <span className="text-orange-400 font-bold flex items-center gap-0.5">Plan B <ChevronRight size={13} /></span>
@@ -177,7 +191,7 @@ export const Inclusions: React.FC = () => {
 
           {/* Right Column: Premium/Luxury Upgrades */}
           <div 
-            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full shrink-0 snap-start bg-gradient-to-br from-amber-950/30 via-white/[0.08] to-black/60 backdrop-blur-3xl text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-400/40 relative overflow-hidden flex flex-col justify-between"
+            className="w-[76vw] max-w-[310px] sm:w-[400px] lg:w-full lg:max-w-none shrink-0 lg:shrink snap-start bg-gradient-to-br from-amber-950/30 via-white/[0.08] to-black/60 backdrop-blur-3xl text-white p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl border border-amber-400/40 relative overflow-hidden flex flex-col justify-between"
             style={{
               boxShadow: "0 24px 50px -10px rgba(245, 158, 11, 0.15), 0 12px 32px rgba(0,0,0,0.6), inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.3)"
             }}
@@ -186,35 +200,40 @@ export const Inclusions: React.FC = () => {
             <div className="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/20 rounded-full filter blur-[40px] pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4">
+              <div className="mb-4 sm:mb-6 border-b border-white/10 pb-3 sm:pb-4 lg:pb-6 lg:mb-6 lg:min-h-[116px] flex flex-col justify-between">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] sm:text-xs uppercase font-extrabold text-amber-300 bg-amber-500/20 border border-amber-400/40 px-2.5 py-0.5 rounded-md tracking-wider flex items-center gap-1">
                     <Sparkles className="w-3 h-3 text-amber-300" /> Plan B
                   </span>
-                  <span className="text-[10px] text-amber-300/90 font-semibold">Premium Upgrade</span>
+                  <span className="text-[10px] lg:text-xs text-amber-300/90 font-semibold">Premium Upgrade</span>
                 </div>
-                <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
-                  Exclusive Heritage Luxury
-                </h3>
-                <p className="text-[11px] sm:text-xs text-slate-300 mt-1">
-                  For travellers seeking ultimate VIP luxury, palaces, & bespoke rituals.
-                </p>
+                <div>
+                  <h3 className="text-base sm:text-lg md:text-2xl font-display font-bold text-white mt-1.5">
+                    Exclusive Heritage Luxury
+                  </h3>
+                  <p className="text-[11px] sm:text-xs lg:text-sm text-slate-300 mt-1">
+                    For travellers seeking ultimate VIP luxury, palaces, & bespoke rituals.
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-3 sm:space-y-4 lg:space-y-3">
                 {inclusions.map((item, index) => (
-                  <div key={index} className="flex gap-2.5 sm:gap-3.5 items-start">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-amber-500/15 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                  <div 
+                    key={index} 
+                    className="flex gap-2.5 sm:gap-3.5 items-start lg:items-center lg:p-3.5 lg:rounded-xl lg:bg-amber-400/[0.04] lg:border lg:border-amber-400/15 lg:hover:bg-amber-400/[0.08] lg:hover:border-amber-400/30 lg:transition-all lg:duration-200 lg:min-h-[72px]"
+                  >
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-lg sm:rounded-xl bg-amber-500/15 border border-amber-400/30 text-amber-300 flex items-center justify-center shrink-0 mt-0.5 lg:mt-0 shadow-2xs">
                       {item.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-xs sm:text-sm font-display font-bold text-white flex items-center gap-1.5">
+                      <h4 className="text-xs sm:text-sm lg:text-[15px] font-display font-bold text-white flex items-center gap-1.5">
                         {item.title}
-                        <span className="text-[8.5px] uppercase bg-amber-400/30 text-amber-200 font-bold px-1.5 py-0.2 rounded border border-amber-400/30">
+                        <span className="text-[8.5px] lg:text-[10px] uppercase bg-amber-400/30 text-amber-200 font-bold px-1.5 py-0.2 lg:px-2 lg:py-0.5 rounded border border-amber-400/30">
                           VIP
                         </span>
                       </h4>
-                      <p className="text-[10.5px] sm:text-xs text-slate-300 mt-0.5 leading-snug">
+                      <p className="text-[10.5px] sm:text-xs lg:text-sm text-slate-300 mt-0.5 leading-snug">
                         {item.premiumDesc}
                       </p>
                     </div>
@@ -223,6 +242,15 @@ export const Inclusions: React.FC = () => {
               </div>
             </div>
 
+            {/* Desktop reassurance footer */}
+            <div className="hidden lg:flex items-center justify-between pt-4 mt-6 border-t border-white/10 text-xs text-amber-300/90 relative z-10">
+              <span className="flex items-center gap-1.5 font-medium">
+                <Sparkles className="w-4 h-4 text-amber-400" /> Ultimate luxury & priority access
+              </span>
+              <span className="text-amber-400 font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Optional Upgrade</span>
+            </div>
+
+            {/* Mobile swipe helper */}
             <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 lg:hidden relative z-10">
               <span className="text-amber-400 font-bold flex items-center gap-0.5"><ChevronLeft size={13} /> Plan A</span>
               <span>Exclusive Upgrades</span>
